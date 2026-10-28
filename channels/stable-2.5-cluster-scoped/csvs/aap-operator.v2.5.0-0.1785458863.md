@@ -8,7 +8,7 @@
 | **Operator package** | `ansible-automation-platform-operator` |
 | **Operator version** | `2.5.0+0.1785458863` |
 | **Build date** | 2026-07-31 |
-| **Replaces** | [`aap-operator.v2.5.0-0.1784067933`](./aap-operator.v2.5.0-0.1784067933.md) |
+| **Previous CSV** | [`aap-operator.v2.5.0-0.1784067933`](./aap-operator.v2.5.0-0.1784067933.md) |
 | **Skip range** | `>=2.4.0-0.1727259094 <2.5.1` |
 | **Bundle image** | `registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:579799acd2e5069188f48ad78e36bf0a866dc02e464ec22d729dbdb47645eb9c` |
 | **Seen in OCP operator indexes** | 4.18 |

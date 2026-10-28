@@ -8,8 +8,8 @@ Container images shipped by every Red Hat Ansible Automation Platform operator C
 in the `{{ channel_name }}` channel, newest first. Click a CSV to see each image
 with its version, build date, and digest.
 
-| Operator CSV (click for images) | Build Date |{% for h in headline %} {{ h.title }} |{% endfor %} All Components | Replaces | OCP Operator Indexes |
-|---|---|{% for h in headline %}---|{% endfor %}---|---|---|
+| Operator CSV (click for images) | Build Date |{% for h in headline %} {{ h.title }} |{% endfor %} All Components | OCP Operator Indexes |
+|---|---|{% for h in headline %}---|{% endfor %}---|---|
 {% for csv in csvs %}
 {% set ns = namespace(items=[], cols=[]) %}
 {% for img in csv.images if img.name and img.digest %}
@@ -20,5 +20,5 @@ with its version, build date, and digest.
 {% set match = csv.images | selectattr('repository', 'search', h.repository) | list %}
 {% set ns.cols = ns.cols + [((m.label_for(match[0]) | from_json).version | default('?', true)) if match else '—'] %}
 {% endfor %}
-| [{{ csv.csv_name }}](./csvs/{{ csv.csv_name }}.md) | {{ csv.build_date | default('N/A', true) }} |{% for c in ns.cols %} {{ c }} |{% endfor %} <details><summary>View ({{ ns.items | unique | list | length }})</summary>{{ ns.items | unique | sort | join('<br>') }}</details> | {{ csv.replaces | default('—', true) }} | {{ csv.ocp_indexes | join(', ') }} |
+| [{{ csv.csv_name }}](./csvs/{{ csv.csv_name }}.md) | {{ csv.build_date | default('N/A', true) }} |{% for c in ns.cols %} {{ c }} |{% endfor %} <details><summary>View ({{ ns.items | unique | list | length }})</summary>{{ ns.items | unique | sort | join('<br>') }}</details> | {{ csv.ocp_indexes | join(', ') }} |
 {% endfor %}
