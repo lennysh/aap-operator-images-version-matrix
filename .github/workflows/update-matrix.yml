@@ -1,0 +1,128 @@
+# Refresh AAP operator channel image data and generated markdown, then open a PR.
+# Runs daily and on demand.
+#
+# Required repo secrets: REGISTRY_REDHAT_IO_USERNAME, REGISTRY_REDHAT_IO_PASSWORD
+name: Update operator images matrix
+
+on:
+  workflow_dispatch:
+    inputs:
+      channels:
+        description: Optional comma-separated channel list (leave empty for config.yml channels)
+        type: string
+        required: false
+        default: ""
+      open_pull_request:
+        description: Open a pull request with the changes
+        type: boolean
+        default: true
+  schedule:
+    - cron: '30 6 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-matrix
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install podman and skopeo
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y podman skopeo
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Ansible and PyYAML
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install "ansible-core>=2.15" PyYAML
+
+      - name: Log in to registry.redhat.io
+        env:
+          REGISTRY_USER: ${{ secrets.REGISTRY_REDHAT_IO_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_REDHAT_IO_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${REGISTRY_USER}" || -z "${REGISTRY_PASSWORD}" ]]; then
+            echo "::error::Set repository secrets REGISTRY_REDHAT_IO_USERNAME and REGISTRY_REDHAT_IO_PASSWORD (Red Hat registry service account)."
+            exit 1
+          fi
+          echo "${REGISTRY_PASSWORD}" | podman login registry.redhat.io \
+            --username "${REGISTRY_USER}" \
+            --password-stdin
+          podman login --get-login registry.redhat.io
+
+      - name: Scrape operator channels and resolve image labels
+        env:
+          CHANNELS: ${{ inputs.channels }}
+        run: |
+          set -euo pipefail
+          cmd=(ansible-playbook operator_images.yml)
+          if [[ -n "${CHANNELS}" ]]; then
+            json=$(python3 -c 'import json,sys; print(json.dumps({"aap_operator_images_channels": [c.strip() for c in sys.argv[1].split(",") if c.strip()]}))' "${CHANNELS}")
+            cmd+=(-e "${json}")
+          fi
+          printf 'Running:'; printf ' %q' "${cmd[@]}"; printf '\n'
+          "${cmd[@]}"
+
+      - name: Regenerate markdown
+        run: ansible-playbook md_generator.yml
+
+      - name: Detect changes
+        id: changes
+        run: |
+          set -euo pipefail
+          if git status --porcelain -- channels data README.md | grep -q .; then
+            echo "changed=true" >> "${GITHUB_OUTPUT}"
+            git status --short -- channels data README.md
+          else
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+            echo "No matrix changes detected."
+          fi
+
+      - name: Create pull request
+        id: cpr
+        if: ${{ (github.event_name == 'schedule' || inputs.open_pull_request) && steps.changes.outputs.changed == 'true' }}
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: |
+            chore: refresh AAP operator images matrix
+
+            Automated update via Update operator images matrix workflow.
+          title: "chore: refresh AAP operator images matrix"
+          body: |
+            ## Summary
+            Automated refresh of operator channel CSV image data, image labels, and generated markdown.
+
+            | Option | Value |
+            | --- | --- |
+            | Trigger | `${{ github.event_name }}` |
+            | `channels` | `${{ inputs.channels || '(config.yml channels)' }}` |
+
+            ## Test plan
+            - [ ] Spot-check new CSVs under `channels/*/vars/`
+            - [ ] Confirm generated `channels/**/README.md` tables look correct
+            - [ ] Merge when ready
+          branch: chore/update-matrix
+          delete-branch: true
+          add-paths: |
+            channels
+            data
+            README.md

@@ -1,0 +1,3 @@
+---
+# Root README.md that receives the managed channel table
+md_generator_root_readme: "{{ aap_operator_images_repo_root }}/README.md"

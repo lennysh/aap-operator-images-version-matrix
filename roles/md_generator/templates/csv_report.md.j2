@@ -1,0 +1,37 @@
+{% import '_macros.j2' as m with context %}
+{% set channel_csvs = csvs | map(attribute='csv_name') | list %}
+# `{{ csv.csv_name }}`
+
+[← Back to `{{ channel_name }}`](../README.md)
+
+| | |
+|---|---|
+| **Channel** | `{{ csv.channel }}` |
+| **Operator package** | `{{ csv.package }}` |
+| **Operator version** | `{{ csv.operator_version }}` |
+| **Build date** | {{ csv.build_date | default('N/A', true) }} |
+| **Replaces** | {% if csv.replaces in channel_csvs %}[`{{ csv.replaces }}`](./{{ csv.replaces }}.md){% elif csv.replaces %}`{{ csv.replaces }}`{% else %}—{% endif %} |
+| **Skip range** | {% if csv.skip_range %}`{{ csv.skip_range }}`{% else %}—{% endif %} |
+| **Bundle image** | `{{ csv.bundle_image }}` |
+| **Seen in OCP operator indexes** | {{ csv.ocp_indexes | join(', ') }} |
+
+## Container images
+
+| Component | Image | Version | Release | Image Build Date | Digest |
+|---|---|---|---|---|---|
+{% for img in csv.images %}
+{% set lbl = m.label_for(img) | from_json %}
+| {{ m.component_name(img) }} | `{{ img.repository }}{{ ':' ~ img.tag if img.tag else '' }}` | {{ lbl.version | default('N/A', true) }} | {{ lbl.release | default('N/A', true) }} | {{ (lbl.build_date | default(''))[:10] or 'N/A' }} | `{{ img.digest[:19] if img.digest else 'N/A' }}` |
+{% endfor %}
+
+## Image pull specs
+
+<details><summary>All {{ csv.images | map(attribute='image') | unique | list | length }} image references (for mirroring)</summary>
+
+```text
+{% for image in csv.images | map(attribute='image') | unique | sort %}
+{{ image }}
+{% endfor %}
+```
+
+</details>

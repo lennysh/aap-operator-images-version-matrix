@@ -1,0 +1,58 @@
+---
+# Shared configuration for operator_images.yml and md_generator.yml.
+# Override any value at run time with -e, e.g.:
+#   ansible-playbook operator_images.yml -e '{"aap_operator_images_channels": ["stable-2.6"]}'
+
+# Registry (credentials fall back to an existing `podman login`)
+aap_operator_images_registry: registry.redhat.io
+aap_operator_images_registry_username: "{{ lookup('env', 'REGISTRY_USERNAME') }}"
+aap_operator_images_registry_password: "{{ lookup('env', 'REGISTRY_PASSWORD') }}"
+
+# OLM package for the AAP operator in the Red Hat operator index
+aap_operator_images_package: ansible-automation-platform-operator
+
+# Operator index tags to scan (registry.redhat.io/redhat/redhat-operator-index:v<ocp>).
+# CSVs are merged across every index listed, so add older tags to pick up
+# CSVs that have been pruned from newer indexes.
+aap_operator_images_ocp_versions:
+  - "4.18"
+  - "4.21"
+
+# AAP operator channels to dump. Each channel gets channels/<channel>/README.md.
+aap_operator_images_channels:
+  - stable-2.4
+  - stable-2.4-cluster-scoped
+  - stable-2.5
+  - stable-2.5-cluster-scoped
+  - stable-2.6
+  - stable-2.6-cluster-scoped
+  - stable-2.7
+  - stable-2.7-cluster-scoped
+
+# Repo paths
+aap_operator_images_repo_root: "{{ playbook_dir }}"
+aap_operator_images_channels_dir: "{{ aap_operator_images_repo_root }}/channels"
+aap_operator_images_labels_file: "{{ aap_operator_images_repo_root }}/data/image_labels.yml"
+# Extracted operator index package catalogs (one dir per OCP tag)
+aap_operator_images_index_cache_dir: "{{ aap_operator_images_repo_root }}/.cache/operator-index"
+# Re-pull the operator index even when a cached extract exists
+aap_operator_images_refresh_index: true
+
+# Image label lookups (skopeo inspect) run in parallel; only new digests are inspected
+aap_operator_images_label_workers: 8
+# Retry digests whose label lookup failed on a previous run
+aap_operator_images_label_retry_failed: true
+
+# Components shown as their own columns in each channel README (matched against the
+# image repository; the first matching image's `version` label is shown).
+aap_operator_images_headline_components:
+  - title: Gateway
+    repository: '/gateway-rhel\d+$'
+  - title: Controller
+    repository: '/controller-rhel\d+$'
+  - title: EDA
+    repository: '/eda-controller-rhel\d+$'
+  - title: Hub
+    repository: '/hub-rhel\d+$'
+  - title: Lightspeed
+    repository: '/lightspeed-rhel\d+$'

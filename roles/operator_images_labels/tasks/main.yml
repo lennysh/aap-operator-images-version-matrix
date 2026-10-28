@@ -1,0 +1,15 @@
+---
+- name: Resolve image version labels for new digests
+  aap_image_labels:
+    channels_dir: "{{ aap_operator_images_channels_dir }}"
+    labels_file: "{{ aap_operator_images_labels_file }}"
+    workers: "{{ aap_operator_images_label_workers }}"
+    retry_failed: "{{ aap_operator_images_label_retry_failed }}"
+  register: aap_operator_images_labels_result
+
+- name: Label lookup summary
+  ansible.builtin.debug:
+    msg: >-
+      Digests known: {{ aap_operator_images_labels_result.total }},
+      inspected this run: {{ aap_operator_images_labels_result.inspected }},
+      failed: {{ aap_operator_images_labels_result.failed_refs | length }}

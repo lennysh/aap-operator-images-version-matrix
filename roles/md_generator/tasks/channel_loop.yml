@@ -1,0 +1,49 @@
+# md_generator/tasks/channel_loop.yml
+---
+- name: Find CSV vars files for channel
+  ansible.builtin.find:
+    paths: "{{ __vars_dir }}"
+    patterns: "*.yml"
+  register: md_generator_csv_files
+
+- name: Build sorted CSV list for template (newest first)
+  vars:
+    _csvs: "{{ query('ansible.builtin.file', *(md_generator_csv_files.files | map(attribute='path'))) | map('from_yaml') | list }}"
+  ansible.builtin.set_fact:
+    channel_name: "{{ __vars_dir | dirname | basename }}"
+    channel_dir: "{{ __vars_dir | dirname }}"
+    csvs: "{{ _csvs | sort(attribute='csv_name') | sort(attribute='build_date') | reverse | list }}"
+
+- name: Record channel summary for README.md
+  ansible.builtin.set_fact:
+    md_generator_channels: >-
+      {{
+        md_generator_channels | default([]) + [{
+          'name': channel_name,
+          'count': csvs | length,
+          'latest': csvs[0].csv_name if csvs else '',
+          'latest_date': csvs[0].build_date if csvs else '',
+        }]
+      }}
+
+- name: "Generate channel README: {{ channel_name }}"
+  ansible.builtin.template:
+    src: channel_report.md.j2
+    dest: "{{ channel_dir }}/README.md"
+    mode: '0644'
+
+- name: Ensure CSV report directory exists
+  ansible.builtin.file:
+    path: "{{ channel_dir }}/csvs"
+    state: directory
+    mode: '0755'
+
+- name: "Generate CSV reports: {{ channel_name }}"
+  ansible.builtin.template:
+    src: csv_report.md.j2
+    dest: "{{ channel_dir }}/csvs/{{ csv.csv_name }}.md"
+    mode: '0644'
+  loop: "{{ csvs }}"
+  loop_control:
+    loop_var: csv
+    label: "{{ csv.csv_name }}"

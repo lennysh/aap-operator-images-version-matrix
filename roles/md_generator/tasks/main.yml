@@ -1,0 +1,30 @@
+# md_generator/tasks/main.yml
+---
+- name: Load image label cache
+  ansible.builtin.set_fact:
+    image_labels: >-
+      {{
+        (lookup('ansible.builtin.file', aap_operator_images_labels_file) | from_yaml)
+        if aap_operator_images_labels_file is exists else {}
+      }}
+
+- name: Find all channel vars directories
+  ansible.builtin.find:
+    paths: "{{ aap_operator_images_channels_dir }}"
+    patterns: "vars"
+    file_type: directory
+    recurse: true
+  register: md_generator_vars_dirs
+
+- name: Process each channel
+  ansible.builtin.include_tasks: channel_loop.yml
+  loop: "{{ md_generator_vars_dirs.files | map(attribute='path') | sort }}"
+  loop_control:
+    loop_var: __vars_dir
+    label: "{{ __vars_dir | dirname | basename }}"
+
+- name: Update channel table in README.md
+  ansible.builtin.blockinfile:
+    path: "{{ md_generator_root_readme }}"
+    marker: "[comment]: <> ({mark} Ansible Managed)"
+    block: "{{ lookup('ansible.builtin.template', 'channel_index.md.j2') }}"

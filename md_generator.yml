@@ -1,0 +1,13 @@
+---
+# Regenerate channels/**/README.md, per-CSV pages, and the README.md channel table
+# from channels/<channel>/vars/*.yml and data/image_labels.yml.
+
+- name: Generate Markdown reports for AAP operator channels
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+    - config.yml
+
+  roles:
+    - role: md_generator

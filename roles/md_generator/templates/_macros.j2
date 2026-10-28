@@ -1,0 +1,11 @@
+{%- macro label_for(img) -%}
+{{ image_labels.get(img.digest, {}) | to_json }}
+{%- endmacro -%}
+
+{%- macro short_repo(img) -%}
+{{ img.repository | regex_replace('^.*/', '') }}
+{%- endmacro -%}
+
+{%- macro component_name(img) -%}
+{{ img.name if img.name else '(operator bundle)' }}
+{%- endmacro -%}

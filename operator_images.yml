@@ -1,0 +1,25 @@
+---
+# Dump container images for every CSV in the configured AAP operator channels.
+# Requires: podman, skopeo, and a login to registry.redhat.io
+#
+# Usage:
+#   ansible-playbook operator_images.yml                 # scrape + labels
+#   ansible-playbook operator_images.yml --tags scrape   # CSV/image data only
+#   ansible-playbook operator_images.yml --tags labels   # resolve image version labels only
+#
+# Edit config.yml to change channels or operator index versions.
+
+- name: Dump AAP operator channel images
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+    - config.yml
+
+  roles:
+    - role: operator_images_common
+      tags: [always]
+    - role: operator_images_scrape
+      tags: [scrape]
+    - role: operator_images_labels
+      tags: [labels]

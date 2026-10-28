@@ -1,0 +1,25 @@
+---
+- name: Check required tools are installed
+  ansible.builtin.command: which {{ item }}
+  loop:
+    - podman
+    - skopeo
+  register: aap_operator_images_tool_check
+  changed_when: false
+
+- name: Log in to Red Hat container registry
+  when: aap_operator_images_registry_username | length > 0 and aap_operator_images_registry_password | length > 0
+  ansible.builtin.shell: |
+    set -o pipefail
+    echo "{{ aap_operator_images_registry_password }}" | podman login {{ aap_operator_images_registry }} -u "{{ aap_operator_images_registry_username }}" --password-stdin
+  no_log: true
+  changed_when: false
+
+- name: Verify registry login (when credentials not provided)
+  when: >-
+    aap_operator_images_registry_username | default('') | length == 0
+    or aap_operator_images_registry_password | default('') | length == 0
+  ansible.builtin.command:
+    cmd: podman login {{ aap_operator_images_registry }} --get-login
+  register: aap_operator_images_login_check
+  changed_when: false

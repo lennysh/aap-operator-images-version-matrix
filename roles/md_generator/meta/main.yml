@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  role_name: md_generator
+  author: lennysh
+  description: Generate markdown reports for AAP operator channel images
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: GenericLinux
+      versions:
+        - all
+  galaxy_tags:
+    - aap
+    - openshift
+    - operator
+
+dependencies: []

@@ -1,0 +1,11 @@
+---
+# Generated per-CSV vars and markdown under channels/ are data, not Ansible content.
+exclude_paths:
+  - channels/
+  - data/
+  - .cache/
+  - .github/
+
+# Internal tooling roles share the aap_operator_images_* namespace from config.yml.
+skip_list:
+  - var-naming[no-role-prefix]

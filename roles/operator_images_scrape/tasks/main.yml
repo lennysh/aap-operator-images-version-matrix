@@ -1,0 +1,36 @@
+---
+- name: Dump channel images from operator index
+  aap_operator_channel_scrape:
+    ocp_version: "{{ item }}"
+    channels: "{{ aap_operator_images_channels }}"
+    package_name: "{{ aap_operator_images_package }}"
+    registry: "{{ aap_operator_images_registry }}"
+    channels_dir: "{{ aap_operator_images_channels_dir }}"
+    index_cache_dir: "{{ aap_operator_images_index_cache_dir }}"
+    refresh_index: "{{ aap_operator_images_refresh_index }}"
+  loop: "{{ aap_operator_images_ocp_versions }}"
+  loop_control:
+    label: "OCP {{ item }}"
+  register: aap_operator_images_scrape_loop
+
+- name: Find channels missing from every scanned index
+  ansible.builtin.set_fact:
+    aap_operator_images_missing_channels: >-
+      {{
+        aap_operator_images_channels
+        | difference(aap_operator_images_scrape_loop.results | map(attribute='channels_found') | flatten)
+      }}
+
+- name: Warn about channels not found in any index
+  when: aap_operator_images_missing_channels | length > 0
+  ansible.builtin.debug:
+    msg: >-
+      Channels not found in any scanned operator index
+      ({{ aap_operator_images_ocp_versions | join(', ') }}):
+      {{ aap_operator_images_missing_channels | join(', ') }}
+
+- name: Scrape summary
+  ansible.builtin.debug:
+    msg: >-
+      CSVs seen: {{ aap_operator_images_scrape_loop.results | map(attribute='csvs_seen') | sum }},
+      CSV files written: {{ aap_operator_images_scrape_loop.results | map(attribute='csvs_written') | flatten | unique | length }}
