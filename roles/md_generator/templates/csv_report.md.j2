@@ -13,7 +13,7 @@
 | **Previous CSV** | {% if csv.replaces in channel_csvs %}[`{{ csv.replaces }}`](./{{ csv.replaces }}.md){% elif csv.replaces %}`{{ csv.replaces }}`{% else %}—{% endif %} |
 | **Skip range** | {% if csv.skip_range %}`{{ csv.skip_range }}`{% else %}—{% endif %} |
 | **Bundle image** | `{{ csv.bundle_image }}` |
-| **Seen in OCP operator indexes** | {{ csv.ocp_indexes | join(', ') }} |
+| **Seen in OCP operator indexes** | {{ m.ocp_ranges(csv.ocp_indexes) }} |
 
 ## Container images
 

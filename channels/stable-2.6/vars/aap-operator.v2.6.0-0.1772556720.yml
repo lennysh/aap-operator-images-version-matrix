@@ -9,7 +9,12 @@ skip_range: '>=2.4.0-0.1727257740 <2.6.1'
 skips: []
 bundle_image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:05d2b3dde2dcf28c2120a4a02f3954e8a316be6aae8b9dea7e776f00177cf505
 ocp_indexes:
+- '4.14'
+- '4.16'
+- '4.17'
 - '4.18'
+- '4.19'
+- '4.20'
 - '4.21'
 images:
 - name: automation-controller-container

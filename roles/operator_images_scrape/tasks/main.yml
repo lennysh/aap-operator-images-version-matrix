@@ -29,6 +29,21 @@
       ({{ aap_operator_images_ocp_versions | join(', ') }}):
       {{ aap_operator_images_missing_channels | join(', ') }}
 
+- name: Find channels in the index that are not configured
+  ansible.builtin.set_fact:
+    aap_operator_images_unconfigured_channels: >-
+      {{
+        aap_operator_images_scrape_loop.results | map(attribute='channels_available') | flatten | unique
+        | difference(aap_operator_images_channels) | sort
+      }}
+
+- name: Report channels not in aap_operator_images_channels
+  when: aap_operator_images_unconfigured_channels | length > 0
+  ansible.builtin.debug:
+    msg: >-
+      Channels available but not configured (add to config.yml to track):
+      {{ aap_operator_images_unconfigured_channels | join(', ') }}
+
 - name: Scrape summary
   ansible.builtin.debug:
     msg: >-

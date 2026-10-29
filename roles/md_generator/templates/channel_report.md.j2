@@ -20,5 +20,5 @@ with its version, build date, and digest.
 {% set match = csv.images | selectattr('repository', 'search', h.repository) | list %}
 {% set ns.cols = ns.cols + [((m.label_for(match[0]) | from_json).version | default('?', true)) if match else '—'] %}
 {% endfor %}
-| [{{ csv.csv_name }}](./csvs/{{ csv.csv_name }}.md) | {{ csv.build_date | default('N/A', true) }} |{% for c in ns.cols %} {{ c }} |{% endfor %} <details><summary>View ({{ ns.items | unique | list | length }})</summary>{{ ns.items | unique | sort | join('<br>') }}</details> | {{ csv.ocp_indexes | join(', ') }} |
+| [{{ csv.csv_name }}](./csvs/{{ csv.csv_name }}.md) | {{ csv.build_date | default('N/A', true) }} |{% for c in ns.cols %} {{ c }} |{% endfor %} <details><summary>View ({{ ns.items | unique | list | length }})</summary>{{ ns.items | unique | sort | join('<br>') }}</details> | {{ m.ocp_ranges(csv.ocp_indexes) }} |
 {% endfor %}

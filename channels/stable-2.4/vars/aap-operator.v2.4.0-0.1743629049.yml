@@ -1,0 +1,186 @@
+---
+csv_name: aap-operator.v2.4.0-0.1743629049
+package: ansible-automation-platform-operator
+channel: stable-2.4
+operator_version: 2.4.0+0.1743629049
+build_date: '2025-04-02'
+replaces: aap-operator.v2.4.0-0.1742444794
+skip_range: '>=2.0.1-0.1635279521 <2.4.1'
+skips: []
+bundle_image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:c4fe1decab5e1355cc61882777697174af0ad37f12c23c90f10491e59a772e9a
+ocp_indexes:
+- '4.12'
+- '4.13'
+- '4.14'
+- '4.15'
+- '4.16'
+- '4.17'
+images:
+- name: controller
+  image: registry.redhat.io/ansible-automation-platform-24/controller-rhel8@sha256:532193c3519a0a84c95445b935a7efd44b8ce6950509c72a9a4b5374f5c47e2e
+  repository: registry.redhat.io/ansible-automation-platform-24/controller-rhel8
+  tag: ''
+  digest: sha256:532193c3519a0a84c95445b935a7efd44b8ce6950509c72a9a4b5374f5c47e2e
+  source: relatedImages
+- name: automation-controller-manager
+  image: registry.redhat.io/ansible-automation-platform-24/controller-rhel8-operator@sha256:63036433399c824fd34192b230f829b0e6aeaa3d3ad26506b0ae661bf1d02d5b
+  repository: registry.redhat.io/ansible-automation-platform-24/controller-rhel8-operator
+  tag: ''
+  digest: sha256:63036433399c824fd34192b230f829b0e6aeaa3d3ad26506b0ae661bf1d02d5b
+  source: relatedImages
+- name: eda
+  image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8@sha256:075e6bc38577d431fb1c02a3db35bc8b94a53d92b7ce1810cc6cab4dbfaaa7b8
+  repository: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8
+  tag: ''
+  digest: sha256:075e6bc38577d431fb1c02a3db35bc8b94a53d92b7ce1810cc6cab4dbfaaa7b8
+  source: relatedImages
+- name: eda-manager
+  image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8-operator@sha256:50db1109f84e150d2f2996fa8e01dfeeac6dff915e893915d788f543f1f13eec
+  repository: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8-operator
+  tag: ''
+  digest: sha256:50db1109f84e150d2f2996fa8e01dfeeac6dff915e893915d788f543f1f13eec
+  source: relatedImages
+- name: eda_ui
+  image: registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8@sha256:8f8ac13ddcc1bd07b0adbc854171b9e6b2ac93860097dbe992d0c7cc56284675
+  repository: registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8
+  tag: ''
+  digest: sha256:8f8ac13ddcc1bd07b0adbc854171b9e6b2ac93860097dbe992d0c7cc56284675
+  source: relatedImages
+- name: ee_minimal
+  image: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8@sha256:91a18c7ed4d0783016f2d6eb5cbd07009d2474d092abcb143daa587670983f6c
+  repository: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8
+  tag: ''
+  digest: sha256:91a18c7ed4d0783016f2d6eb5cbd07009d2474d092abcb143daa587670983f6c
+  source: relatedImages
+- name: control_plane_ee
+  image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8@sha256:13c29f3884454235b2d60eebdd44f0b0f25b9060048f4553eb0b153f6b3fbbdc
+  repository: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8
+  tag: ''
+  digest: sha256:13c29f3884454235b2d60eebdd44f0b0f25b9060048f4553eb0b153f6b3fbbdc
+  source: relatedImages
+- name: controller_init_container
+  image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8@sha256:13c29f3884454235b2d60eebdd44f0b0f25b9060048f4553eb0b153f6b3fbbdc
+  repository: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8
+  tag: ''
+  digest: sha256:13c29f3884454235b2d60eebdd44f0b0f25b9060048f4553eb0b153f6b3fbbdc
+  source: relatedImages
+- name: ee_supported
+  image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8@sha256:13c29f3884454235b2d60eebdd44f0b0f25b9060048f4553eb0b153f6b3fbbdc
+  repository: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8
+  tag: ''
+  digest: sha256:13c29f3884454235b2d60eebdd44f0b0f25b9060048f4553eb0b153f6b3fbbdc
+  source: relatedImages
+- name: hub
+  image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8@sha256:6f0b844208d82df7b2378792ae7ca0edb347cc9684a91c307b8f417e75ad3986
+  repository: registry.redhat.io/ansible-automation-platform-24/hub-rhel8
+  tag: ''
+  digest: sha256:6f0b844208d82df7b2378792ae7ca0edb347cc9684a91c307b8f417e75ad3986
+  source: relatedImages
+- name: automation-hub-manager
+  image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8-operator@sha256:11b397b67e99e9ae1846716795d87f6843cbcbf37601992cb73b0956ba64d3f1
+  repository: registry.redhat.io/ansible-automation-platform-24/hub-rhel8-operator
+  tag: ''
+  digest: sha256:11b397b67e99e9ae1846716795d87f6843cbcbf37601992cb73b0956ba64d3f1
+  source: relatedImages
+- name: hub_web
+  image: registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8@sha256:268ff11c1dd4d9faece34a536b6679c937a1c11b5b3e3217a6ee3166c6574594
+  repository: registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8
+  tag: ''
+  digest: sha256:268ff11c1dd4d9faece34a536b6679c937a1c11b5b3e3217a6ee3166c6574594
+  source: relatedImages
+- name: ansible_ai_connect
+  image: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel8@sha256:bea7dcbdda6f02752e26189a09a7a266e85605beb0ed7360b5bc3bb2118824b0
+  repository: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel8
+  tag: ''
+  digest: sha256:bea7dcbdda6f02752e26189a09a7a266e85605beb0ed7360b5bc3bb2118824b0
+  source: relatedImages
+- name: ansible-lightspeed-manager
+  image: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel8-operator@sha256:21e433b9b25bea513708c020b40a9aa72d626a2b5025103f94dac4505085bb06
+  repository: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel8-operator
+  tag: ''
+  digest: sha256:21e433b9b25bea513708c020b40a9aa72d626a2b5025103f94dac4505085bb06
+  source: relatedImages
+- name: platform-resource-manager
+  image: registry.redhat.io/ansible-automation-platform-24/platform-resource-rhel8-operator@sha256:776288cad5900fb5bf84e930746cd5137a3ca5e2ed13f5c4e32911d84d94b411
+  repository: registry.redhat.io/ansible-automation-platform-24/platform-resource-rhel8-operator
+  tag: ''
+  digest: sha256:776288cad5900fb5bf84e930746cd5137a3ca5e2ed13f5c4e32911d84d94b411
+  source: relatedImages
+- name: ansible_job_runner_image
+  image: registry.redhat.io/ansible-automation-platform-24/platform-resource-runner-rhel8@sha256:c823d5516a31aef7d0f6a2a3ea261101911c5e74de25da9d895880298b5ba1ba
+  repository: registry.redhat.io/ansible-automation-platform-24/platform-resource-runner-rhel8
+  tag: ''
+  digest: sha256:c823d5516a31aef7d0f6a2a3ea261101911c5e74de25da9d895880298b5ba1ba
+  source: relatedImages
+- name: ''
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:c4fe1decab5e1355cc61882777697174af0ad37f12c23c90f10491e59a772e9a
+  repository: registry.redhat.io/ansible-automation-platform/platform-operator-bundle
+  tag: ''
+  digest: sha256:c4fe1decab5e1355cc61882777697174af0ad37f12c23c90f10491e59a772e9a
+  source: relatedImages
+- name: kube-rbac-proxy
+  image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:7ce50398cd29df6e07ccd89790a53a711a7e5b484698c48f6581f5d4e9efb05a
+  repository: registry.redhat.io/openshift4/ose-kube-rbac-proxy
+  tag: ''
+  digest: sha256:7ce50398cd29df6e07ccd89790a53a711a7e5b484698c48f6581f5d4e9efb05a
+  source: relatedImages
+- name: ansible_ai_connect_postgres
+  image: registry.redhat.io/rhel8/postgresql-13@sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  repository: registry.redhat.io/rhel8/postgresql-13
+  tag: ''
+  digest: sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  source: relatedImages
+- name: controller_postgres
+  image: registry.redhat.io/rhel8/postgresql-13@sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  repository: registry.redhat.io/rhel8/postgresql-13
+  tag: ''
+  digest: sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  source: relatedImages
+- name: eda_postgres
+  image: registry.redhat.io/rhel8/postgresql-13@sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  repository: registry.redhat.io/rhel8/postgresql-13
+  tag: ''
+  digest: sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  source: relatedImages
+- name: hub_postgres
+  image: registry.redhat.io/rhel8/postgresql-13@sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  repository: registry.redhat.io/rhel8/postgresql-13
+  tag: ''
+  digest: sha256:9e7b35740d53a1a781351fd49007d505921324c073b0a0375022e42d04b4cfb2
+  source: relatedImages
+- name: controller_redis
+  image: registry.redhat.io/rhel8/redis-6@sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197
+  repository: registry.redhat.io/rhel8/redis-6
+  tag: ''
+  digest: sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197
+  source: relatedImages
+- name: eda_redis
+  image: registry.redhat.io/rhel8/redis-6@sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197
+  repository: registry.redhat.io/rhel8/redis-6
+  tag: ''
+  digest: sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197
+  source: relatedImages
+- name: hub_redis
+  image: registry.redhat.io/rhel8/redis-6@sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197
+  repository: registry.redhat.io/rhel8/redis-6
+  tag: ''
+  digest: sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197
+  source: relatedImages
+- name: controller_init_projects_container
+  image: registry.redhat.io/ubi8/ubi-minimal@sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+  repository: registry.redhat.io/ubi8/ubi-minimal
+  tag: ''
+  digest: sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+  source: relatedImages
+- name: eda_init_container
+  image: registry.redhat.io/ubi8/ubi-minimal@sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+  repository: registry.redhat.io/ubi8/ubi-minimal
+  tag: ''
+  digest: sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+  source: relatedImages
+- name: hub_init_gpg_container
+  image: registry.redhat.io/ubi8/ubi-minimal@sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+  repository: registry.redhat.io/ubi8/ubi-minimal
+  tag: ''
+  digest: sha256:33161cf5ec11ea13bfe60cad64f56a3aa4d893852e8ec44b2fd2a6b40cc38539
+  source: relatedImages

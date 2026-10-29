@@ -14,9 +14,21 @@ aap_operator_images_package: ansible-automation-platform-operator
 # Operator index tags to scan (registry.redhat.io/redhat/redhat-operator-index:v<ocp>).
 # CSVs are merged across every index listed, so add older tags to pick up
 # CSVs that have been pruned from newer indexes.
+# v4.10 and older are SQLite-based (no file-based catalog) and can't be read.
 aap_operator_images_ocp_versions:
+  - "4.11"
+  - "4.12"
+  - "4.13"
+  - "4.14"
+  - "4.15"
+  - "4.16"
+  - "4.17"
   - "4.18"
+  - "4.19"
+  - "4.20"
   - "4.21"
+  - "4.22"
+  - "4.23"
 
 # AAP operator channels to dump. Each channel gets channels/<channel>/README.md.
 aap_operator_images_channels:
@@ -54,5 +66,3 @@ aap_operator_images_headline_components:
     repository: '/eda-controller-rhel\d+$'
   - title: Hub
     repository: '/hub-rhel\d+$'
-  - title: Lightspeed
-    repository: '/lightspeed-rhel\d+$'

@@ -9,3 +9,19 @@
 {%- macro component_name(img) -%}
 {{ img.name if img.name else '(operator bundle)' }}
 {%- endmacro -%}
+
+{#- Collapse consecutive OCP minors: 4.11, 4.12, 4.13, 4.16 -> 4.11–4.13, 4.16 -#}
+{%- macro ocp_ranges(versions) -%}
+{%- set ns = namespace(out=[], start=none, prev=none) -%}
+{%- for v in versions -%}
+{%- set minor = v.split('.')[1] | int -%}
+{%- if ns.prev is not none and minor == ns.prev + 1 -%}
+{%- set ns.prev = minor -%}
+{%- else -%}
+{%- if ns.start is not none -%}{%- set ns.out = ns.out + [('4.' ~ ns.start) if ns.start == ns.prev else ('4.' ~ ns.start ~ '–4.' ~ ns.prev)] -%}{%- endif -%}
+{%- set ns.start = minor -%}{%- set ns.prev = minor -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if ns.start is not none -%}{%- set ns.out = ns.out + [('4.' ~ ns.start) if ns.start == ns.prev else ('4.' ~ ns.start ~ '–4.' ~ ns.prev)] -%}{%- endif -%}
+{{ ns.out | join(', ') }}
+{%- endmacro -%}

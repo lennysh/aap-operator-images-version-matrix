@@ -76,6 +76,10 @@ channels_missing:
   description: Requested channels absent from this index.
   type: list
   returned: always
+channels_available:
+  description: Every channel for the package in this index (configured or not).
+  type: list
+  returned: always
 csvs_seen:
   description: Number of CSV entries processed across found channels.
   type: int
@@ -316,6 +320,7 @@ def main():
         index_status=status,
         channels_found=[],
         channels_missing=list(p["channels"]),
+        channels_available=[],
         csvs_seen=0,
         csvs_written=[],
     )
@@ -332,6 +337,7 @@ def main():
         if d.get("schema") == "olm.channel" and d.get("package") == p["package_name"]
     }
 
+    result["channels_available"] = sorted(channels)
     for channel in p["channels"]:
         ch = channels.get(channel)
         if ch is None:

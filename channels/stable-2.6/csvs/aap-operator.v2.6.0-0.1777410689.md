@@ -11,7 +11,7 @@
 | **Previous CSV** | [`aap-operator.v2.6.0-0.1774648945`](./aap-operator.v2.6.0-0.1774648945.md) |
 | **Skip range** | `>=2.4.0-0.1727257740 <2.6.1` |
 | **Bundle image** | `registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:a6f711ac57bf1a1de8e9121a25cf2af3462168c8d1e2fb7b0d6b5eb26e73aafe` |
-| **Seen in OCP operator indexes** | 4.18, 4.21 |
+| **Seen in OCP operator indexes** | 4.14, 4.16, 4.18–4.21 |
 
 ## Container images
 

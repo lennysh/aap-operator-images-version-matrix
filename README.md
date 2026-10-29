@@ -16,8 +16,8 @@ The tables below are generated automatically. Click a channel to see every CSV i
 
 | Channel (click for details) | CSVs | Latest CSV | Latest Build Date |
 | :-------------------------- | ---: | :--------- | :---------------- |
-| [stable-2.4](./channels/stable-2.4/README.md) | 18 | [aap-operator.v2.4.0-0.1791963300](./channels/stable-2.4/csvs/aap-operator.v2.4.0-0.1791963300.md) | 2026-10-14 |
-| [stable-2.4-cluster-scoped](./channels/stable-2.4-cluster-scoped/README.md) | 18 | [aap-operator.v2.4.0-0.1791968974](./channels/stable-2.4-cluster-scoped/csvs/aap-operator.v2.4.0-0.1791968974.md) | 2026-10-14 |
+| [stable-2.4](./channels/stable-2.4/README.md) | 38 | [aap-operator.v2.4.0-0.1791963300](./channels/stable-2.4/csvs/aap-operator.v2.4.0-0.1791963300.md) | 2026-10-14 |
+| [stable-2.4-cluster-scoped](./channels/stable-2.4-cluster-scoped/README.md) | 38 | [aap-operator.v2.4.0-0.1791968974](./channels/stable-2.4-cluster-scoped/csvs/aap-operator.v2.4.0-0.1791968974.md) | 2026-10-14 |
 | [stable-2.5](./channels/stable-2.5/README.md) | 38 | [aap-operator.v2.5.0-0.1791992932](./channels/stable-2.5/csvs/aap-operator.v2.5.0-0.1791992932.md) | 2026-10-14 |
 | [stable-2.5-cluster-scoped](./channels/stable-2.5-cluster-scoped/README.md) | 38 | [aap-operator.v2.5.0-0.1791992655](./channels/stable-2.5-cluster-scoped/csvs/aap-operator.v2.5.0-0.1791992655.md) | 2026-10-14 |
 | [stable-2.6](./channels/stable-2.6/README.md) | 22 | [aap-operator.v2.6.0-0.1791996347](./channels/stable-2.6/csvs/aap-operator.v2.6.0-0.1791996347.md) | 2026-10-14 |
@@ -74,8 +74,9 @@ Channels and operator index versions are set in [`config.yml`](config.yml):
 
 ```yaml
 aap_operator_images_ocp_versions:
-  - "4.18"
-  - "4.21"
+  - "4.11"
+  # ...
+  - "4.23"
 
 aap_operator_images_channels:
   - stable-2.6

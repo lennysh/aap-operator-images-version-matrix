@@ -4,13 +4,19 @@ package: ansible-automation-platform-operator
 channel: stable-2.7-cluster-scoped
 operator_version: 2.7.0+0.1788929740
 build_date: '2026-09-09'
-replaces: aap-operator.v2.7.0-0.1787240781
-skip_range: '>=2.6.0-0 <2.7.1'
+replaces: ''
+skip_range: ''
 skips: []
 bundle_image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:617ec5679ab05cad64478ba877d0e5c7e6a2b393a4b402d8e2e3da99774389fb
 ocp_indexes:
+- '4.14'
+- '4.16'
 - '4.18'
+- '4.19'
+- '4.20'
 - '4.21'
+- '4.22'
+- '4.23'
 images:
 - name: automation-controller-container
   image: registry.redhat.io/ansible-automation-platform-27/controller-rhel9@sha256:2fb1ba9d17110f3bbceb01dcdd29119d9b1240ead44d73595be5c718a40766e6
