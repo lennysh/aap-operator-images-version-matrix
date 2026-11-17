@@ -16,14 +16,14 @@ The tables below are generated automatically. Click a channel to see every CSV i
 
 | Channel (click for details) | CSVs | Latest CSV | Latest Build Date |
 | :-------------------------- | ---: | :--------- | :---------------- |
-| [stable-2.4](./channels/stable-2.4/README.md) | 38 | [aap-operator.v2.4.0-0.1791963300](./channels/stable-2.4/csvs/aap-operator.v2.4.0-0.1791963300.md) | 2026-10-14 |
-| [stable-2.4-cluster-scoped](./channels/stable-2.4-cluster-scoped/README.md) | 38 | [aap-operator.v2.4.0-0.1791968974](./channels/stable-2.4-cluster-scoped/csvs/aap-operator.v2.4.0-0.1791968974.md) | 2026-10-14 |
-| [stable-2.5](./channels/stable-2.5/README.md) | 38 | [aap-operator.v2.5.0-0.1791992932](./channels/stable-2.5/csvs/aap-operator.v2.5.0-0.1791992932.md) | 2026-10-14 |
-| [stable-2.5-cluster-scoped](./channels/stable-2.5-cluster-scoped/README.md) | 38 | [aap-operator.v2.5.0-0.1791992655](./channels/stable-2.5-cluster-scoped/csvs/aap-operator.v2.5.0-0.1791992655.md) | 2026-10-14 |
-| [stable-2.6](./channels/stable-2.6/README.md) | 22 | [aap-operator.v2.6.0-0.1791996347](./channels/stable-2.6/csvs/aap-operator.v2.6.0-0.1791996347.md) | 2026-10-14 |
-| [stable-2.6-cluster-scoped](./channels/stable-2.6-cluster-scoped/README.md) | 22 | [aap-operator.v2.6.0-0.1791996292](./channels/stable-2.6-cluster-scoped/csvs/aap-operator.v2.6.0-0.1791996292.md) | 2026-10-14 |
-| [stable-2.7](./channels/stable-2.7/README.md) | 13 | [aap-operator.v2.7.0-0.1792432839](./channels/stable-2.7/csvs/aap-operator.v2.7.0-0.1792432839.md) | 2026-10-19 |
-| [stable-2.7-cluster-scoped](./channels/stable-2.7-cluster-scoped/README.md) | 13 | [aap-operator.v2.7.0-0.1792432849](./channels/stable-2.7-cluster-scoped/csvs/aap-operator.v2.7.0-0.1792432849.md) | 2026-10-19 |
+| [stable-2.4](./channels/stable-2.4/README.md) | 41 | [aap-operator.v2.4.0-0.1793880845](./channels/stable-2.4/csvs/aap-operator.v2.4.0-0.1793880845.md) | 2026-11-05 |
+| [stable-2.4-cluster-scoped](./channels/stable-2.4-cluster-scoped/README.md) | 41 | [aap-operator.v2.4.0-0.1793887686](./channels/stable-2.4-cluster-scoped/csvs/aap-operator.v2.4.0-0.1793887686.md) | 2026-11-05 |
+| [stable-2.5](./channels/stable-2.5/README.md) | 41 | [aap-operator.v2.5.0-0.1793872036](./channels/stable-2.5/csvs/aap-operator.v2.5.0-0.1793872036.md) | 2026-11-05 |
+| [stable-2.5-cluster-scoped](./channels/stable-2.5-cluster-scoped/README.md) | 41 | [aap-operator.v2.5.0-0.1793872138](./channels/stable-2.5-cluster-scoped/csvs/aap-operator.v2.5.0-0.1793872138.md) | 2026-11-05 |
+| [stable-2.6](./channels/stable-2.6/README.md) | 25 | [aap-operator.v2.6.0-0.1793870311](./channels/stable-2.6/csvs/aap-operator.v2.6.0-0.1793870311.md) | 2026-11-05 |
+| [stable-2.6-cluster-scoped](./channels/stable-2.6-cluster-scoped/README.md) | 25 | [aap-operator.v2.6.0-0.1793870349](./channels/stable-2.6-cluster-scoped/csvs/aap-operator.v2.6.0-0.1793870349.md) | 2026-11-05 |
+| [stable-2.7](./channels/stable-2.7/README.md) | 16 | [aap-operator.v2.7.0-0.1794269743](./channels/stable-2.7/csvs/aap-operator.v2.7.0-0.1794269743.md) | 2026-11-10 |
+| [stable-2.7-cluster-scoped](./channels/stable-2.7-cluster-scoped/README.md) | 16 | [aap-operator.v2.7.0-0.1794269668](./channels/stable-2.7-cluster-scoped/csvs/aap-operator.v2.7.0-0.1794269668.md) | 2026-11-10 |
 
 [comment]: <> (END Ansible Managed)
 
