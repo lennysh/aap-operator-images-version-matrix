@@ -1,0 +1,4 @@
+# Runtime dependencies for operator_images.yml and md_generator.yml.
+# Pinned for reproducible runs; Dependabot keeps them current.
+ansible-core==2.22.0
+PyYAML==6.0.4

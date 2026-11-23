@@ -17,6 +17,11 @@ description:
     the full CSV).
   - Existing vars files are merged so C(ocp_indexes) accumulates every index tag the CSV
     has been observed in. CSVs that disappear from an index are never deleted.
+  - Channels are either the explicit I(channels) list or, when that is empty, every channel
+    in the index whose name matches I(channel_pattern) (minus I(channel_exclude)).
+  - When I(skip_unchanged) is set, the index tag's digest and the channel selection are
+    remembered in I(state_file); if neither changed since the last successful scrape the
+    index is not pulled at all.
   - Use in an Ansible loop over OCP index tags for live progress.
 version_added: "1.0.0"
 options:
@@ -25,10 +30,32 @@ options:
     required: true
     type: str
   channels:
-    description: OLM channel names to dump.
-    required: true
+    description:
+      - OLM channel names to dump.
+      - Leave empty to dump every channel matching I(channel_pattern).
+    required: false
     type: list
     elements: str
+    default: []
+  channel_pattern:
+    description: Regex (re.search) selecting channels to dump when I(channels) is empty.
+    required: false
+    type: str
+    default: "^stable-"
+  channel_min_version:
+    description:
+      - Skip channels whose AAP version (first C(<major>.<minor>) in the name, e.g. C(stable-2.4)
+        -> C(2.4)) is lower than this. Channels without a version in the name are kept.
+      - Only applies when I(channels) is empty. Leave empty to keep every version.
+    required: false
+    type: str
+    default: ""
+  channel_exclude:
+    description: Channel names never dumped, even when they match I(channel_pattern).
+    required: false
+    type: list
+    elements: str
+    default: []
   channels_dir:
     description: Output root; files go to C(<channels_dir>/<channel>/vars/).
     required: true
@@ -42,6 +69,27 @@ options:
     required: false
     type: bool
     default: true
+  index_digest:
+    description:
+      - Current manifest digest of the index tag, if already known (e.g. from discovery).
+      - Looked up with C(skopeo inspect) when empty.
+    required: false
+    type: str
+    default: ""
+  skip_unchanged:
+    description: Skip indexes whose digest and channel selection match I(state_file).
+    required: false
+    type: bool
+    default: true
+  state_file:
+    description: YAML file remembering the last successfully scraped digest per index tag.
+    required: false
+    type: path
+  index_repository:
+    description: Operator index repository path within the registry.
+    required: false
+    type: str
+    default: redhat/redhat-operator-index
   package_name:
     description: OLM package name in the operator index.
     required: false
@@ -68,8 +116,12 @@ EXAMPLES = r'''
 '''
 
 RETURN = r'''
+index_status:
+  description: One of C(ok), C(cached), C(unchanged), C(pull_failed), C(create_failed), C(package_not_found).
+  type: str
+  returned: always
 channels_found:
-  description: Requested channels present in this index.
+  description: Dumped channels present in this index.
   type: list
   returned: always
 channels_missing:
@@ -92,16 +144,21 @@ csvs_written:
 
 import base64
 import datetime
+import hashlib
 import json
 import os
 import re
 import shutil
 import subprocess
+import tarfile
 import tempfile
 
 import yaml
 
 from ansible.module_utils.basic import AnsibleModule
+
+# Bump when the vars file format or scrape logic changes so unchanged indexes are re-read.
+SCRAPE_FORMAT = 3
 
 
 def version_key(version):
@@ -114,14 +171,48 @@ def csv_epoch(csv_name):
     return int(match.group(1)) if match else None
 
 
-def extract_package_catalog(module, ocp_version, package, registry, cache_dir, refresh):
+def index_digest(image):
+    """Current manifest digest of an image tag, or "" if it can't be read."""
+    proc = subprocess.run(
+        ["skopeo", "inspect", "--no-tags", "--format", "{{.Digest}}", "docker://%s" % image],
+        capture_output=True, text=True,
+    )
+    return proc.stdout.strip() if proc.returncode == 0 else ""
+
+
+def copy_out(container_id, src, dest_dir):
+    """podman cp <container>:<src> into dest_dir via a tar stream (no shell)."""
+    proc = subprocess.Popen(
+        ["podman", "cp", "%s:%s" % (container_id, src), "-"],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    )
+    try:
+        with tarfile.open(fileobj=proc.stdout, mode="r|") as tar:
+            for member in tar:
+                # Only plain files/dirs, and never outside dest_dir.
+                target = os.path.realpath(os.path.join(dest_dir, member.name))
+                if not target.startswith(os.path.realpath(dest_dir) + os.sep):
+                    continue
+                if member.isdir() or member.isfile():
+                    tar.extract(member, dest_dir, set_attrs=False)
+    except tarfile.TarError as exc:
+        proc.kill()
+        proc.wait()
+        return "tar: %s" % exc
+    finally:
+        proc.stdout.close()
+    stderr = proc.stderr.read().decode("utf-8", "replace").strip()
+    proc.stderr.close()
+    return stderr if proc.wait() != 0 else ""
+
+
+def extract_package_catalog(module, image, ocp_version, package, cache_dir, refresh):
     """Return path to <cache>/ocp-<ver>/<package>, pulling the index if needed."""
     ocp_dir = os.path.join(cache_dir, "ocp-%s" % ocp_version)
     pkg_dir = os.path.join(ocp_dir, package)
     if os.path.isdir(pkg_dir) and not refresh:
         return pkg_dir, "cached"
 
-    image = "%s/redhat/redhat-operator-index:v%s" % (registry, ocp_version)
     pull = subprocess.run(["podman", "pull", "-q", image], capture_output=True, text=True)
     if pull.returncode != 0:
         module.warn("Failed to pull %s: %s" % (image, pull.stderr.strip()))
@@ -134,17 +225,12 @@ def extract_package_catalog(module, ocp_version, package, registry, cache_dir, r
         status = "create_failed"
     else:
         container_id = create.stdout.strip()
-        tmp_dir = tempfile.mkdtemp(dir=cache_dir if os.path.isdir(cache_dir) else None)
-        cp = subprocess.run(
-            "podman cp %s:/configs/%s - | tar -x -C %s" % (container_id, package, tmp_dir),
-            shell=True,
-            capture_output=True,
-            text=True,
-        )
+        tmp_dir = tempfile.mkdtemp(dir=cache_dir)
+        err = copy_out(container_id, "/configs/%s" % package, tmp_dir)
         subprocess.run(["podman", "rm", "-v", container_id], capture_output=True)
         extracted = os.path.join(tmp_dir, package)
-        if cp.returncode != 0 or not os.path.isdir(extracted):
-            module.warn("Package %s not found in %s" % (package, image))
+        if err or not os.path.isdir(extracted):
+            module.warn("Package %s not found in %s %s" % (package, image, err))
             status = "package_not_found"
         else:
             shutil.rmtree(pkg_dir, ignore_errors=True)
@@ -155,6 +241,50 @@ def extract_package_catalog(module, ocp_version, package, registry, cache_dir, r
     # Index images are large; do not leave them in local storage.
     subprocess.run(["podman", "rmi", image], capture_output=True)
     return (pkg_dir if status == "ok" else None), status
+
+
+def load_state(path):
+    if path and os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as fp:
+            return yaml.safe_load(fp) or {}
+    return {}
+
+
+def save_state(path, state):
+    if not path:
+        return
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    tmp = "%s.tmp" % path
+    with open(tmp, "w", encoding="utf-8") as fp:
+        yaml.safe_dump(state, fp, sort_keys=True, default_flow_style=False)
+    os.replace(tmp, path)
+
+
+def selection_fingerprint(params):
+    """Hash of everything besides the index digest that affects what gets written."""
+    key = repr((
+        SCRAPE_FORMAT, params["package_name"], sorted(params["channels"]),
+        params["channel_pattern"], params["channel_min_version"], sorted(params["channel_exclude"]),
+        os.path.realpath(params["channels_dir"]),
+    ))
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:16]
+
+
+def channel_version(channel):
+    match = re.search(r"(\d+)\.(\d+)", channel)
+    return (int(match.group(1)), int(match.group(2))) if match else None
+
+
+def select_channels(available, explicit, pattern, exclude, min_version=""):
+    if explicit:
+        return list(explicit)
+    regex = re.compile(pattern)
+    floor = channel_version(min_version) if min_version else None
+    return [
+        c for c in sorted(available)
+        if regex.search(c) and c not in exclude
+        and not (floor and channel_version(c) and channel_version(c) < floor)
+    ]
 
 
 def load_fbc_docs(pkg_dir):
@@ -255,6 +385,14 @@ def bundle_version(bundle):
     return ""
 
 
+def created_at(bundle):
+    """YYYY-MM-DD from the embedded CSV's createdAt annotation, if present."""
+    csv = embedded_csv(bundle) or {}
+    value = ((csv.get("metadata") or {}).get("annotations") or {}).get("createdAt") or ""
+    match = re.match(r"\d{4}-\d{2}-\d{2}", str(value))
+    return match.group(0) if match else ""
+
+
 def build_record(package, channel, entry, bundle, ocp_version):
     name = entry["name"]
     epoch = csv_epoch(name)
@@ -265,7 +403,7 @@ def build_record(package, channel, entry, bundle, ocp_version):
         "operator_version": bundle_version(bundle),
         "build_date": (
             datetime.datetime.fromtimestamp(epoch, datetime.timezone.utc).strftime("%Y-%m-%d")
-            if epoch else ""
+            if epoch else created_at(bundle)
         ),
         "replaces": entry.get("replaces") or "",
         "skip_range": entry.get("skipRange") or "",
@@ -277,14 +415,23 @@ def build_record(package, channel, entry, bundle, ocp_version):
     return record
 
 
-def write_record(path, record):
-    """Merge ocp_indexes with an existing file; write only on change."""
+def write_record(path, record, ocp_version):
+    """Merge with an existing file; write only on change.
+
+    ocp_indexes accumulates every index the CSV was seen in. Indexes can disagree on the
+    other fields (e.g. `replaces`), so those always come from the newest index the CSV was
+    seen in. That keeps the result the same no matter which indexes this run scanned.
+    """
     existing = None
     if os.path.exists(path):
         with open(path, "r", encoding="utf-8") as fp:
             existing = yaml.safe_load(fp) or {}
-        merged = set(existing.get("ocp_indexes") or []) | set(record["ocp_indexes"])
-        record["ocp_indexes"] = sorted(merged, key=version_key)
+        seen = existing.get("ocp_indexes") or []
+        merged = sorted(set(seen) | set(record["ocp_indexes"]), key=version_key)
+        newest_seen = max(seen, key=version_key) if seen else None
+        if newest_seen and version_key(newest_seen) > version_key(ocp_version):
+            record = dict(existing)
+        record["ocp_indexes"] = merged
     if existing == record:
         return False
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -298,32 +445,66 @@ def main():
     module = AnsibleModule(
         argument_spec=dict(
             ocp_version=dict(type="str", required=True),
-            channels=dict(type="list", elements="str", required=True),
+            channels=dict(type="list", elements="str", default=[]),
+            channel_pattern=dict(type="str", default="^stable-"),
+            channel_min_version=dict(type="str", default=""),
+            channel_exclude=dict(type="list", elements="str", default=[]),
             channels_dir=dict(type="path", required=True),
             index_cache_dir=dict(type="path", required=True),
             refresh_index=dict(type="bool", default=True),
+            index_digest=dict(type="str", default=""),
+            skip_unchanged=dict(type="bool", default=True),
+            state_file=dict(type="path"),
+            index_repository=dict(type="str", default="redhat/redhat-operator-index"),
             package_name=dict(type="str", default="ansible-automation-platform-operator"),
             registry=dict(type="str", default="registry.redhat.io"),
         ),
         supports_check_mode=False,
     )
     p = module.params
+    if p["channel_min_version"] and not channel_version(p["channel_min_version"]):
+        module.fail_json(msg="channel_min_version must look like <major>.<minor>, got %r" % p["channel_min_version"])
+    try:
+        re.compile(p["channel_pattern"])
+    except re.error as exc:
+        module.fail_json(msg="Invalid channel_pattern %r: %s" % (p["channel_pattern"], exc))
     os.makedirs(p["index_cache_dir"], exist_ok=True)
 
-    pkg_dir, status = extract_package_catalog(
-        module, p["ocp_version"], p["package_name"], p["registry"],
-        p["index_cache_dir"], p["refresh_index"],
-    )
+    ver = p["ocp_version"]
+    tag_ref = "%s/%s:v%s" % (p["registry"], p["index_repository"], ver)
+    digest = p["index_digest"] or index_digest(tag_ref)
+    fingerprint = selection_fingerprint(p)
+    state = load_state(p["state_file"])
+    prev = state.get(ver) or {}
+
     result = dict(
         changed=False,
-        ocp_version=p["ocp_version"],
-        index_status=status,
+        ocp_version=ver,
+        index_digest=digest,
+        index_status="",
         channels_found=[],
         channels_missing=list(p["channels"]),
         channels_available=[],
         csvs_seen=0,
         csvs_written=[],
     )
+
+    if (p["skip_unchanged"] and digest and prev.get("digest") == digest
+            and prev.get("fingerprint") == fingerprint):
+        result.update(
+            index_status="unchanged",
+            channels_available=prev.get("channels_available") or [],
+            channels_found=prev.get("channels_found") or [],
+        )
+        result["channels_missing"] = [c for c in p["channels"] if c not in result["channels_found"]]
+        module.exit_json(**result)
+
+    # Pull by digest so the catalog read matches the digest recorded in the state file.
+    image = "%s/%s@%s" % (p["registry"], p["index_repository"], digest) if digest else tag_ref
+    pkg_dir, status = extract_package_catalog(
+        module, image, ver, p["package_name"], p["index_cache_dir"], p["refresh_index"],
+    )
+    result["index_status"] = status
     if pkg_dir is None:
         module.exit_json(**result)
 
@@ -338,22 +519,36 @@ def main():
     }
 
     result["channels_available"] = sorted(channels)
-    for channel in p["channels"]:
+    wanted = select_channels(
+        channels, p["channels"], p["channel_pattern"], p["channel_exclude"], p["channel_min_version"],
+    )
+    for channel in wanted:
         ch = channels.get(channel)
         if ch is None:
             continue
         result["channels_found"].append(channel)
-        result["channels_missing"].remove(channel)
+        if channel in result["channels_missing"]:
+            result["channels_missing"].remove(channel)
         for entry in ch.get("entries") or []:
             bundle = bundles.get(entry.get("name"))
             if bundle is None:
                 module.warn("Bundle %s listed in %s but not in catalog" % (entry.get("name"), channel))
                 continue
             result["csvs_seen"] += 1
-            record = build_record(p["package_name"], channel, entry, bundle, p["ocp_version"])
+            record = build_record(p["package_name"], channel, entry, bundle, ver)
             path = os.path.join(p["channels_dir"], channel, "vars", "%s.yml" % record["csv_name"])
-            if write_record(path, record):
+            if write_record(path, record, ver):
                 result["csvs_written"].append(path)
+
+    # Only remember freshly pulled indexes: a cached extract may be older than `digest`.
+    if status == "ok" and digest:
+        state[ver] = {
+            "digest": digest,
+            "fingerprint": fingerprint,
+            "channels_available": result["channels_available"],
+            "channels_found": result["channels_found"],
+        }
+        save_state(p["state_file"], state)
 
     result["changed"] = bool(result["csvs_written"])
     module.exit_json(**result)

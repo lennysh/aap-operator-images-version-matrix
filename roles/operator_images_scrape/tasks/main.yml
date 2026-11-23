@@ -1,51 +1,100 @@
 ---
+- name: Discover operator index versions
+  when: aap_operator_images_ocp_versions | length == 0
+  aap_operator_index_discover:
+    min_version: "{{ aap_operator_images_ocp_min_version }}"
+    exclude: "{{ aap_operator_images_ocp_exclude }}"
+    registry: "{{ aap_operator_images_registry }}"
+    index_repository: "{{ aap_operator_images_index_repository }}"
+  register: aap_operator_images_discovered
+
+- name: Set operator index versions to scan
+  ansible.builtin.set_fact:
+    aap_operator_images_scan_versions: >-
+      {{
+        aap_operator_images_ocp_versions | map('string') | list
+        if aap_operator_images_ocp_versions | length > 0
+        else aap_operator_images_discovered.versions
+      }}
+    aap_operator_images_index_digests: "{{ aap_operator_images_discovered.digests | default({}) }}"
+
+- name: Show operator index versions to scan
+  ansible.builtin.debug:
+    msg: "Scanning operator indexes: {{ aap_operator_images_scan_versions | join(', ') }}"
+
 - name: Dump channel images from operator index
   aap_operator_channel_scrape:
     ocp_version: "{{ item }}"
     channels: "{{ aap_operator_images_channels }}"
+    channel_pattern: "{{ aap_operator_images_channel_pattern }}"
+    channel_min_version: "{{ aap_operator_images_channel_min_version }}"
+    channel_exclude: "{{ aap_operator_images_channel_exclude }}"
     package_name: "{{ aap_operator_images_package }}"
     registry: "{{ aap_operator_images_registry }}"
+    index_repository: "{{ aap_operator_images_index_repository }}"
+    index_digest: "{{ aap_operator_images_index_digests[item] | default('') }}"
     channels_dir: "{{ aap_operator_images_channels_dir }}"
     index_cache_dir: "{{ aap_operator_images_index_cache_dir }}"
     refresh_index: "{{ aap_operator_images_refresh_index }}"
-  loop: "{{ aap_operator_images_ocp_versions }}"
+    skip_unchanged: "{{ aap_operator_images_skip_unchanged_index }}"
+    state_file: "{{ aap_operator_images_index_state_file }}"
+  loop: "{{ aap_operator_images_scan_versions }}"
   loop_control:
     label: "OCP {{ item }}"
   register: aap_operator_images_scrape_loop
 
-- name: Find channels missing from every scanned index
-  ansible.builtin.set_fact:
-    aap_operator_images_missing_channels: >-
-      {{
-        aap_operator_images_channels
-        | difference(aap_operator_images_scrape_loop.results | map(attribute='channels_found') | flatten)
-      }}
-
-- name: Warn about channels not found in any index
-  when: aap_operator_images_missing_channels | length > 0
+- name: Index status
   ansible.builtin.debug:
     msg: >-
-      Channels not found in any scanned operator index
-      ({{ aap_operator_images_ocp_versions | join(', ') }}):
-      {{ aap_operator_images_missing_channels | join(', ') }}
-
-- name: Find channels in the index that are not configured
-  ansible.builtin.set_fact:
-    aap_operator_images_unconfigured_channels: >-
       {{
-        aap_operator_images_scrape_loop.results | map(attribute='channels_available') | flatten | unique
-        | difference(aap_operator_images_channels) | sort
+        aap_operator_images_scrape_loop.results
+        | items2dict(key_name='ocp_version', value_name='index_status')
       }}
 
-- name: Report channels not in aap_operator_images_channels
-  when: aap_operator_images_unconfigured_channels | length > 0
+- name: Fail when no operator index could be read
+  ansible.builtin.assert:
+    that:
+      - >-
+        aap_operator_images_scrape_loop.results | map(attribute='index_status')
+        | select('in', ['ok', 'cached', 'unchanged']) | list | length > 0
+    fail_msg: >-
+      None of the operator indexes ({{ aap_operator_images_scan_versions | join(', ') }}) could be
+      read. Check the registry login and the package name ({{ aap_operator_images_package }}).
+    quiet: true
+
+- name: Collect channels found in the scanned indexes
+  ansible.builtin.set_fact:
+    aap_operator_images_found_channels: >-
+      {{ aap_operator_images_scrape_loop.results | map(attribute='channels_found') | flatten | unique | sort }}
+    aap_operator_images_available_channels: >-
+      {{ aap_operator_images_scrape_loop.results | map(attribute='channels_available') | flatten | unique | sort }}
+
+- name: Fail when no channel was found
+  ansible.builtin.assert:
+    that: aap_operator_images_found_channels | length > 0
+    fail_msg: >-
+      No tracked channel was found in any index. Channels available:
+      {{ aap_operator_images_available_channels | join(', ') or 'none' }}.
+      Check aap_operator_images_channels / aap_operator_images_channel_pattern in config.yml.
+    quiet: true
+
+- name: Warn about configured channels not found in any index
+  when: aap_operator_images_channels | difference(aap_operator_images_found_channels) | length > 0
   ansible.builtin.debug:
     msg: >-
-      Channels available but not configured (add to config.yml to track):
-      {{ aap_operator_images_unconfigured_channels | join(', ') }}
+      Channels not found in any scanned operator index:
+      {{ aap_operator_images_channels | difference(aap_operator_images_found_channels) | sort | join(', ') }}
+
+- name: Report channels in the index that are not tracked
+  when: aap_operator_images_available_channels | difference(aap_operator_images_found_channels) | length > 0
+  ansible.builtin.debug:
+    msg: >-
+      Channels available but not tracked:
+      {{ aap_operator_images_available_channels | difference(aap_operator_images_found_channels) | sort | join(', ') }}
 
 - name: Scrape summary
   ansible.builtin.debug:
     msg: >-
+      Channels tracked: {{ aap_operator_images_found_channels | join(', ') }}.
       CSVs seen: {{ aap_operator_images_scrape_loop.results | map(attribute='csvs_seen') | sum }},
       CSV files written: {{ aap_operator_images_scrape_loop.results | map(attribute='csvs_written') | flatten | unique | length }}

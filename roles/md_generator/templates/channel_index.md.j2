@@ -1,7 +1,8 @@
 
 | Channel (click for details) | CSVs | Latest CSV | Latest Build Date |
 | :-------------------------- | ---: | :--------- | :---------------- |
-{% for ch in md_generator_channels | sort(attribute='name') %}
+{# Sort by name, then by the numbers in it, so stable-2.10 follows stable-2.9 #}
+{% for ch in md_generator_channels | sort(attribute='name') | sort(attribute='version') %}
 | [{{ ch.name }}](./channels/{{ ch.name }}/README.md) | {{ ch.count }} | [{{ ch.latest }}](./channels/{{ ch.name }}/csvs/{{ ch.latest }}.md) | {{ ch.latest_date | default('N/A', true) }} |
 {% endfor %}
 
