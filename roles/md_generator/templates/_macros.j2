@@ -10,18 +10,23 @@
 {{ img.name if img.name else '(operator bundle)' }}
 {%- endmacro -%}
 
-{#- Collapse consecutive OCP minors: 4.11, 4.12, 4.13, 4.16 -> 4.11–4.13, 4.16 -#}
+{%- macro range_label(major, start, end) -%}
+{{ major ~ '.' ~ start if start == end else major ~ '.' ~ start ~ '–' ~ major ~ '.' ~ end }}
+{%- endmacro -%}
+
+{#- Collapse consecutive minors within a major: 4.11, 4.12, 4.13, 4.16, 5.0, 5.1 -> 4.11–4.13, 4.16, 5.0–5.1 -#}
 {%- macro ocp_ranges(versions) -%}
-{%- set ns = namespace(out=[], start=none, prev=none) -%}
+{%- set ns = namespace(out=[], major=none, start=none, prev=none) -%}
 {%- for v in versions -%}
+{%- set major = v.split('.')[0] | int -%}
 {%- set minor = v.split('.')[1] | int -%}
-{%- if ns.prev is not none and minor == ns.prev + 1 -%}
+{%- if ns.prev is not none and major == ns.major and minor == ns.prev + 1 -%}
 {%- set ns.prev = minor -%}
 {%- else -%}
-{%- if ns.start is not none -%}{%- set ns.out = ns.out + [('4.' ~ ns.start) if ns.start == ns.prev else ('4.' ~ ns.start ~ '–4.' ~ ns.prev)] -%}{%- endif -%}
-{%- set ns.start = minor -%}{%- set ns.prev = minor -%}
+{%- if ns.start is not none -%}{%- set ns.out = ns.out + [range_label(ns.major, ns.start, ns.prev)] -%}{%- endif -%}
+{%- set ns.major = major -%}{%- set ns.start = minor -%}{%- set ns.prev = minor -%}
 {%- endif -%}
 {%- endfor -%}
-{%- if ns.start is not none -%}{%- set ns.out = ns.out + [('4.' ~ ns.start) if ns.start == ns.prev else ('4.' ~ ns.start ~ '–4.' ~ ns.prev)] -%}{%- endif -%}
+{%- if ns.start is not none -%}{%- set ns.out = ns.out + [range_label(ns.major, ns.start, ns.prev)] -%}{%- endif -%}
 {{ ns.out | join(', ') }}
 {%- endmacro -%}

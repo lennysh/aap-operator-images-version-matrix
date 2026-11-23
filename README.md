@@ -29,7 +29,7 @@ The tables below are generated automatically. Click a channel to see every CSV i
 
 ## ⚙️ How It Works
 
-1. **Scrape** (`operator_images.yml --tags scrape`): pulls the Red Hat operator index (`registry.redhat.io/redhat/redhat-operator-index:v<ocp>`) for each configured OpenShift version and reads the file-based catalog for the `ansible-automation-platform-operator` package. For every CSV in each configured channel, it writes `channels/<channel>/vars/<csv>.yml` with the bundle's `relatedImages`. CSVs are merged across all scanned indexes and are never deleted, so the history is kept after Red Hat prunes old CSVs from an index.
+1. **Scrape** (`operator_images.yml --tags scrape`): discovers every Red Hat operator index tag (`registry.redhat.io/redhat/redhat-operator-index:v<ocp>`) from OpenShift 4.11 upward, including new major versions, then reads the file-based catalog for the `ansible-automation-platform-operator` package in each one. Every `stable-*` channel for AAP 2.4 and later is tracked automatically, so new AAP releases and new OpenShift versions show up without any config change. For every CSV, it writes `channels/<channel>/vars/<csv>.yml` with the bundle's `relatedImages`. CSVs are merged across all scanned indexes and are never deleted, so the history is kept after Red Hat prunes old CSVs from an index. An index whose digest hasn't changed since its last scrape is not pulled again.
 2. **Labels** (`operator_images.yml --tags labels`): runs `skopeo inspect` (without pulling) on each image digest that hasn't been seen before and caches the `version`, `release`, and `build-date` labels in `data/image_labels.yml`. Digests never change, so each one is inspected only once.
 3. **Markdown** (`md_generator.yml`): renders `channels/<channel>/README.md`, `channels/<channel>/csvs/<csv>.md`, and the channel table above.
 
@@ -52,7 +52,7 @@ To create a service account, go to [Red Hat Hybrid Cloud Console → Service Acc
 
 ### Prerequisites (local)
 
-* Ansible (`ansible-core` 2.15+) with PyYAML
+* Python 3.13+ and the pinned dependencies: `pip install -r requirements.txt`
 * `podman` and `skopeo` on your PATH
 * Access to `registry.redhat.io` (`podman login registry.redhat.io`, or set `REGISTRY_USERNAME` / `REGISTRY_PASSWORD`)
 
@@ -70,21 +70,17 @@ ansible-playbook md_generator.yml
 
 ### Choosing channels and indexes
 
-Channels and operator index versions are set in [`config.yml`](config.yml):
+By default, nothing needs to be configured: operator index versions and channels are discovered on every run. To narrow the discovery, edit [`config.yml`](config.yml):
 
 ```yaml
-aap_operator_images_ocp_versions:
-  - "4.11"
-  # ...
-  - "4.23"
-
-aap_operator_images_channels:
-  - stable-2.6
-  - stable-2.6-cluster-scoped
-  # ...
+aap_operator_images_ocp_min_version: "4.11"     # oldest operator index to scan
+aap_operator_images_ocp_exclude: []             # discovered indexes to skip
+aap_operator_images_channel_pattern: '^stable-' # channels to track (regex)
+aap_operator_images_channel_min_version: "2.4"  # oldest AAP version to track
+aap_operator_images_channel_exclude: []         # matching channels to skip
 ```
 
-You can also override them for a single run:
+Setting `aap_operator_images_ocp_versions` or `aap_operator_images_channels` to an explicit list turns off discovery for that setting. This is handy for a single run:
 
 ```bash
 ansible-playbook operator_images.yml \
@@ -97,6 +93,9 @@ Other useful options:
 # Reuse an operator index extract from .cache/ instead of pulling the index again
 ansible-playbook operator_images.yml -e aap_operator_images_refresh_index=false
 
+# Re-read every index even if its digest hasn't changed since the last scrape
+ansible-playbook operator_images.yml -e aap_operator_images_skip_unchanged_index=false
+
 # Only scrape CSV data; skip the skopeo label lookups
 ansible-playbook operator_images.yml --tags scrape
 ```
@@ -105,18 +104,19 @@ ansible-playbook operator_images.yml --tags scrape
 
 | Path | Contents |
 | :--- | :------- |
-| `config.yml` | Channels, operator index versions, and paths |
+| `config.yml` | Discovery settings, channel filters, and paths |
+| `requirements.txt` | Pinned Python dependencies (kept current by Dependabot) |
 | `channels/<channel>/vars/<csv>.yml` | Raw image data per CSV (source of truth) |
 | `channels/<channel>/README.md` | Generated channel overview |
 | `channels/<channel>/csvs/<csv>.md` | Generated per-CSV image report |
 | `data/image_labels.yml` | Cached image labels keyed by digest |
-| `roles/operator_images_scrape` | Operator index scraper (`aap_operator_channel_scrape` module) |
+| `roles/operator_images_scrape` | Operator index discovery and scraper (`aap_operator_index_discover`, `aap_operator_channel_scrape` modules) |
 | `roles/operator_images_labels` | Image label resolver (`aap_image_labels` module) |
 | `roles/md_generator` | Markdown templates |
 
 ## 🤝 Contributing
 
-Contributions are highly encouraged! To track a new channel (for example, a new AAP release), add it to `aap_operator_images_channels` in `config.yml` and submit a pull request. The workflow will fill in the data. Please don't submit hand edits to files under `channels/`, because they are regenerated.
+Contributions are highly encouraged! New AAP channels and OpenShift versions are picked up automatically, so no config change is needed for a new release. Please don't submit hand edits to files under `channels/`, because they are regenerated (CI fails if the generated Markdown is out of date).
 
 ## ✍️ Authors
 

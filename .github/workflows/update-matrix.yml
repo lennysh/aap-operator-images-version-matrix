@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       channels:
-        description: Optional comma-separated channel list (leave empty for config.yml channels)
+        description: Optional comma-separated channel list (leave empty to track every discovered channel)
         type: string
         required: false
         default: ""
@@ -45,13 +45,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: "3.12"
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
 
       - name: Install Ansible and PyYAML
-        run: |
-          set -euo pipefail
-          python -m pip install --upgrade pip
-          python -m pip install "ansible-core>=2.15" PyYAML
+        run: python -m pip install -r requirements.txt
+
+      # Remembers each operator index digest so unchanged indexes are not pulled again.
+      # A new cache entry is saved every run; the newest one is restored.
+      - name: Restore operator index state
+        uses: actions/cache@v6
+        with:
+          path: .cache/operator-index/state.yml
+          key: operator-index-state-${{ github.run_id }}
+          restore-keys: operator-index-state-
 
       - name: Log in to registry.redhat.io
         env:
@@ -96,6 +104,30 @@ jobs:
             echo "No matrix changes detected."
           fi
 
+          # New CSVs (untracked vars files) and CSVs seen in additional indexes (modified vars files)
+          base="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/chore/update-matrix"
+          new=$(git status --porcelain --untracked-files=all -- 'channels/*/vars/*.yml' \
+            | awk -v base="${base}" '$1 == "??" {
+                split($2, p, "/"); csv = p[4]; sub(/\.yml$/, "", csv)
+                printf "| `%s` | [`%s`](%s/channels/%s/csvs/%s.md) |\n", p[2], csv, base, p[2], csv
+              }' | sort)
+          updated=$(git status --porcelain -- 'channels/*/vars/*.yml' | awk '$1 == "M"' | wc -l)
+          {
+            echo "summary<<EOF_SUMMARY"
+            if [[ -n "${new}" ]]; then
+              echo "### New CSVs"
+              echo
+              echo "| Channel | CSV |"
+              echo "| --- | --- |"
+              echo "${new}"
+            else
+              echo "No new CSVs."
+            fi
+            echo
+            echo "Existing CSVs updated (e.g. seen in another operator index): ${updated}"
+            echo "EOF_SUMMARY"
+          } >> "${GITHUB_OUTPUT}"
+
       - name: Create pull request
         id: cpr
         if: ${{ (github.event_name == 'schedule' || inputs.open_pull_request) && steps.changes.outputs.changed == 'true' }}
@@ -114,7 +146,9 @@ jobs:
             | Option | Value |
             | --- | --- |
             | Trigger | `${{ github.event_name }}` |
-            | `channels` | `${{ inputs.channels || '(config.yml channels)' }}` |
+            | `channels` | `${{ inputs.channels || '(all discovered channels)' }}` |
+
+            ${{ steps.changes.outputs.summary }}
 
             ## Test plan
             - [ ] Spot-check new CSVs under `channels/*/vars/`

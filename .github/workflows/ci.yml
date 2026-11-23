@@ -1,0 +1,67 @@
+# Lint the Ansible content and make sure the generated Markdown is up to date.
+# Note: PRs opened by the update workflow with GITHUB_TOKEN don't trigger this
+# workflow (GitHub blocks that to prevent loops); it runs for every other PR and push.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements-lint.txt
+
+      - name: ansible-lint
+        run: ansible-lint
+
+      - name: Compile modules
+        run: python -m py_compile roles/*/library/*.py
+
+  generated-markdown:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Regenerate markdown
+        run: ansible-playbook md_generator.yml
+
+      - name: Fail if generated files are out of date
+        run: |
+          set -euo pipefail
+          if [[ -n "$(git status --porcelain -- channels README.md)" ]]; then
+            git status --short -- channels README.md
+            git --no-pager diff --stat -- channels README.md
+            echo "::error::Generated Markdown is out of date (or was edited by hand). Run 'ansible-playbook md_generator.yml' and commit the result."
+            exit 1
+          fi

@@ -1,6 +1,4 @@
-ignore_*
 .ansible/
 .cache/
 .vscode/*
-output/
 **/__pycache__/

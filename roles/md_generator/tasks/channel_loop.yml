@@ -20,6 +20,7 @@
       {{
         md_generator_channels | default([]) + [{
           'name': channel_name,
+          'version': channel_name | regex_findall('\\d+') | map('int') | list,
           'count': csvs | length,
           'latest': csvs[0].csv_name if csvs else '',
           'latest_date': csvs[0].build_date if csvs else '',
@@ -47,3 +48,21 @@
   loop_control:
     loop_var: csv
     label: "{{ csv.csv_name }}"
+
+- name: Find generated CSV reports for channel
+  ansible.builtin.find:
+    paths: "{{ channel_dir }}/csvs"
+    patterns: "*.md"
+  register: md_generator_csv_reports
+
+- name: "Remove CSV reports without a vars file: {{ channel_name }}"
+  vars:
+    md_generator_expected_reports: "{{ csvs | map(attribute='csv_name') | map('regex_replace', '$', '.md') | list }}"
+  ansible.builtin.file:
+    path: "{{ channel_dir }}/csvs/{{ item }}"
+    state: absent
+  loop: >-
+    {{
+      md_generator_csv_reports.files | map(attribute='path') | map('basename')
+      | reject('in', md_generator_expected_reports) | list
+    }}
