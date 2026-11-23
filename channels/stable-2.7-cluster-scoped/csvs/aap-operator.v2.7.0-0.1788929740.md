@@ -11,7 +11,7 @@
 | **Previous CSV** | — |
 | **Skip range** | — |
 | **Bundle image** | `registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:617ec5679ab05cad64478ba877d0e5c7e6a2b393a4b402d8e2e3da99774389fb` |
-| **Seen in OCP operator indexes** | 4.14, 4.16, 4.18–4.23, 5.0 |
+| **Seen in OCP operator indexes** | 4.14, 4.16, 4.18–4.23, 5.0–5.1 |
 
 ## Container images
 
