@@ -99,7 +99,7 @@ jobs:
       - name: Create pull request
         id: cpr
         if: ${{ (github.event_name == 'schedule' || inputs.open_pull_request) && steps.changes.outputs.changed == 'true' }}
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: |
