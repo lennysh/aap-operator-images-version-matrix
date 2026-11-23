@@ -17,6 +17,7 @@ ocp_indexes:
 - '4.21'
 - '4.22'
 - '4.23'
+- '5.0'
 images:
 - name: automation-controller-container
   image: registry.redhat.io/ansible-automation-platform-27/controller-rhel9@sha256:d12b90db2fa8cfa5c4b27a72a0f00b99c63bbfa8515df736652f3cde470d4de4

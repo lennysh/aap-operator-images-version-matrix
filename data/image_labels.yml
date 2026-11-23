@@ -293,6 +293,13 @@ sha256:049d730cf68479ea0ff23874468ab6ea9955732e403eee7c7337a999ae3e4d8e:
   build_date: '2025-12-16T07:07:59Z'
   component: ansible-lightspeed-operator-container
   vcs_ref: d2ef78836202e2b562a0199b87249abe7be4aea8
+sha256:04a5a0242b676551825241500f43a4faea6bca489b2af354db7eb3c80364e11a:
+  image: registry.redhat.io/ansible-automation-platform-26/gateway-rhel9-operator@sha256:04a5a0242b676551825241500f43a4faea6bca489b2af354db7eb3c80364e11a
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-09T17:30:29Z'
+  component: automation-gateway-operator-container
+  vcs_ref: 09e1b064bee6d60fca83f3b7bbcb14ebbe351e09
 sha256:04dc558560697443edac184d16684147eba4d6bb7a6dd646928ad433def33c95:
   image: registry.redhat.io/rhel9/postgresql-15@sha256:04dc558560697443edac184d16684147eba4d6bb7a6dd646928ad433def33c95
   version: '1'
@@ -335,6 +342,13 @@ sha256:0576206b44a5cb073b6364f7af104a4a17994f9bb8c7a948da9588d6b4bbf1e8:
   build_date: '2025-04-16T17:49:02'
   component: postgresql-15-container
   vcs_ref: 214221ead5928b2ec8de2bda252dbf8225046508
+sha256:0593aec4ae4293ece03893dd394ef3db3973d2b7ba44b57364ac792f4f8cab72:
+  image: registry.redhat.io/ansible-automation-platform-27/lightspeed-rhel9-operator@sha256:0593aec4ae4293ece03893dd394ef3db3973d2b7ba44b57364ac792f4f8cab72
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-07T02:06:37Z'
+  component: ansible-lightspeed-operator-container
+  vcs_ref: 9f2bdeb84eeba7769c0256779e62201a20d6b869
 sha256:0594fa40ad9a188af6ee626628a06546f3b0f1c55d470af2bf391f7ea880721b:
   image: registry.redhat.io/ansible-automation-platform-25/gateway-rhel8-operator@sha256:0594fa40ad9a188af6ee626628a06546f3b0f1c55d470af2bf391f7ea880721b
   version: '2.5'
@@ -412,6 +426,13 @@ sha256:06a298942f71114a348728b825e0269b5f8589d9b55e2d9e4c462c2ec30c4ba7:
   build_date: '2026-10-27T19:53:47Z'
   component: ansible-lightspeed-operator-container
   vcs_ref: 5d714d91ae0b4196583c1021a8e91e97c460526b
+sha256:06a85f94e42da8213f8b1d37ffd824d5f72d6792cb791dd6ac9d021a8106a15f:
+  image: registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8@sha256:06a85f94e42da8213f8b1d37ffd824d5f72d6792cb791dd6ac9d021a8106a15f
+  version: 1.0.11
+  release: '1794313724'
+  build_date: '2026-11-11T00:50:08Z'
+  component: automation-eda-controller-ui-container
+  vcs_ref: c27a62fb0c5c70d13253a19e0b7561ab689ba1d7
 sha256:06b07e02531704e1a4d9d872b77c90367a3de01fa2633e17950c7475c7adeca7:
   image: registry.redhat.io/ansible-automation-platform-25/controller-rhel8@sha256:06b07e02531704e1a4d9d872b77c90367a3de01fa2633e17950c7475c7adeca7
   version: 4.6.32
@@ -916,6 +937,13 @@ sha256:0f81bae9f081a2cd1765f8aac8742ae48e4d6ca0b66bd517deb04b41847e7197:
   build_date: '2025-03-12T21:05:50'
   component: redis-6-container
   vcs_ref: 4d9b6a1da107a75413f83e3fc3a027ed0332805c
+sha256:0f9810a863ebdc63d6f7228b67681e6055d3de39c99de61efc6fc6b8c9cc7399:
+  image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8@sha256:0f9810a863ebdc63d6f7228b67681e6055d3de39c99de61efc6fc6b8c9cc7399
+  version: 4.9.8
+  release: '1794244899'
+  build_date: '2026-11-10T01:47:25Z'
+  component: automation-hub-container
+  vcs_ref: 1fb103cd0e063f37237ef82e1f3e6638c02d9cdb
 sha256:0f9ea8bf5c4358847dff0f3352f186f91a330e944479883dd250cc0249b26cb6:
   image: registry.redhat.io/ansible-automation-platform-24/platform-resource-runner-rhel8@sha256:0f9ea8bf5c4358847dff0f3352f186f91a330e944479883dd250cc0249b26cb6
   version: '2.4'
@@ -1098,6 +1126,13 @@ sha256:11b397b67e99e9ae1846716795d87f6843cbcbf37601992cb73b0956ba64d3f1:
   build_date: '2025-04-02T18:21:03'
   component: automation-hub-operator-container
   vcs_ref: 3b6d304d39b56236684166a4053d71b47e7a25d2
+sha256:11c0b3229f892edf5be19de37bec3b276c5ada1e21edcbe95636098904face6a:
+  image: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9-operator@sha256:11c0b3229f892edf5be19de37bec3b276c5ada1e21edcbe95636098904face6a
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-08T00:10:03Z'
+  component: ansible-lightspeed-operator-container
+  vcs_ref: 386001472f88cd35727816e25f7d8f82b85c0374
 sha256:11d9152512a7a4a20f7b21f07e397ff3de5521b30c8a6db3cae3b61e8d84e139:
   image: registry.redhat.io/rhel8/postgresql-15@sha256:11d9152512a7a4a20f7b21f07e397ff3de5521b30c8a6db3cae3b61e8d84e139
   version: '1'
@@ -1742,6 +1777,13 @@ sha256:1991b8e95a2ec34ffe6fbc5c931e9e6f79b091dfde8346575d0bee413f2bc5d0:
   build_date: '2026-07-31T00:14:03Z'
   component: automation-eda-controller-ui-container
   vcs_ref: 1b3cf43802f6526edccb93c7a717453b70c42163
+sha256:19b5410e2858b22feb0929d1f21308cf07376817904308557c2789d06fc3ad72:
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:19b5410e2858b22feb0929d1f21308cf07376817904308557c2789d06fc3ad72
+  version: '2.6'
+  release: '2.6'
+  build_date: '2026-11-14T00:11:49Z'
+  component: ansible-automation-platform-operator-bundle-container
+  vcs_ref: ce42f66b09bdf0b4c69e17068b47c4dc59fdf0cd
 sha256:19f8eef28d84821811c47221318af78238937d820ffb543fc204a91485df0978:
   image: registry.redhat.io/ansible-automation-platform-25/gateway-proxy-rhel8@sha256:19f8eef28d84821811c47221318af78238937d820ffb543fc204a91485df0978
   version: 2.5.10
@@ -1896,6 +1938,13 @@ sha256:1c1cc82bb94b11d09fd5f16a4f5916bc3137b4a2488616f227b0b62c7850a4a5:
   build_date: '2024-10-09T22:03:46'
   component: ansible-lightspeed-container
   vcs_ref: 6119b22b60d90efb692ab222df8f547455f61283
+sha256:1c4c2600019717f026859673d9ac7f1d78e2cf14f7b4ae3cf0efdc62d122a653:
+  image: registry.redhat.io/ansible-automation-platform-27/controller-rhel9-operator@sha256:1c4c2600019717f026859673d9ac7f1d78e2cf14f7b4ae3cf0efdc62d122a653
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-07T01:56:08Z'
+  component: automation-controller-operator-container
+  vcs_ref: 0749f640bc38963b3faae51423d07876a23cc298
 sha256:1c5249f43c844d89e52c1544c40e3455206a6db03a76f8142c1a0624280b0eb7:
   image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8@sha256:1c5249f43c844d89e52c1544c40e3455206a6db03a76f8142c1a0624280b0eb7
   version: 4.9.5
@@ -2225,6 +2274,13 @@ sha256:20c4d33ddcabfe83d0b68e63ad973a1e2474b95a3fbc7e4a71f60fa9d8527c32:
   build_date: '2026-09-17T01:11:19Z'
   component: automation-gateway-proxy-container
   vcs_ref: 97b47749049153df54f1369ddbde0f68e01f8243
+sha256:20df0b9841f328a4449fecc70ea45f266e65e545d94eb60935f5394e08ba19fc:
+  image: registry.redhat.io/ansible-automation-platform-26/hub-rhel9-operator@sha256:20df0b9841f328a4449fecc70ea45f266e65e545d94eb60935f5394e08ba19fc
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-08T00:16:56Z'
+  component: automation-hub-operator-container
+  vcs_ref: 102468e3a85944f2115c8dc5a8a2735ff3ab50f2
 sha256:20f8928c5d28d1ed4bcb615af548ab66ca8ab215db8c4abd28f4257ab0ff1a47:
   image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:20f8928c5d28d1ed4bcb615af548ab66ca8ab215db8c4abd28f4257ab0ff1a47
   version: '2.5'
@@ -2771,6 +2827,13 @@ sha256:2a01dd8c1c8f9248a444de5b62a84107dd9f70e680a38c227c01e3442660901a:
   build_date: '2026-10-14T03:29:57Z'
   component: platform-resource-runner-container
   vcs_ref: 7a43bbb6a830457c3201a1391cf862e99e3d39de
+sha256:2a12d5672ef8e6caa2c2d6e555abbefd88368357ee6258f2f6a1c46d7ee689c6:
+  image: registry.redhat.io/ansible-automation-platform-26/ee-supported-rhel9@sha256:2a12d5672ef8e6caa2c2d6e555abbefd88368357ee6258f2f6a1c46d7ee689c6
+  version: 2.0.0
+  release: '1793829856'
+  build_date: '2026-11-13T02:38:20Z'
+  component: ee-supported-container
+  vcs_ref: 3fda5c313a92a5b3035cc4cc2d1ee45edbd594e5
 sha256:2a8ab76c0e459b8bab9177e6fa1ac14b813b283dda183d3ace82e6558ba3b7d2:
   image: registry.redhat.io/ansible-automation-platform-26/platform-resource-rhel9-operator@sha256:2a8ab76c0e459b8bab9177e6fa1ac14b813b283dda183d3ace82e6558ba3b7d2
   version: '2.6'
@@ -3065,6 +3128,13 @@ sha256:30853b0a84160b0143d579922ea46f4cb2b2c696646b1a73f32e20368cd850d6:
   build_date: '2024-10-09T22:06:09'
   component: automation-controller-container
   vcs_ref: cfd0ac5a4d3c2c62c3b572685ea4769ac74f32af
+sha256:30a7a8de816b816b32abcaeb6e3599cf1aa12f825862c6f552f237901a1cccaa:
+  image: registry.redhat.io/ansible-automation-platform-26/eda-controller-ui-rhel9@sha256:30a7a8de816b816b32abcaeb6e3599cf1aa12f825862c6f552f237901a1cccaa
+  version: 1.2.15
+  release: '1794514344'
+  build_date: '2026-11-13T02:15:40Z'
+  component: automation-eda-controller-ui-container
+  vcs_ref: de2a5ec4d799fad145ac580cdba2d2b1e9244c3e
 sha256:30baa4157b9c04e233dadea1235bbafa5cb819916db240e52595b1188c6265ef:
   image: registry.redhat.io/ansible-automation-platform-25/hub-rhel8-operator@sha256:30baa4157b9c04e233dadea1235bbafa5cb819916db240e52595b1188c6265ef
   version: '2.5'
@@ -3135,6 +3205,13 @@ sha256:3152f929db0cea0858db6c7443b9c75c6a986f7c7d6e4a4e7e8fc86eac40a7d5:
   build_date: '2025-05-28T13:26:36'
   component: platform-resource-operator-container
   vcs_ref: 6d0cbf63a75fd822ed44f3911789013cabb069fd
+sha256:316c3425898ba46e9771cf228ca4b6a3df8265edadd781eee4408dfda92b2ac0:
+  image: registry.redhat.io/ansible-automation-platform-27/hub-rhel9@sha256:316c3425898ba46e9771cf228ca4b6a3df8265edadd781eee4408dfda92b2ac0
+  version: 4.12.12
+  release: '1793829856'
+  build_date: '2026-11-13T04:32:21Z'
+  component: automation-hub-container
+  vcs_ref: de70ae07c2b3f26f94dcd70279bf0a60c99fda4f
 sha256:319323e37969cce7f5f711272fb4989f6d7705dfc2416492f37a7a68a4f2c0af:
   image: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel8@sha256:319323e37969cce7f5f711272fb4989f6d7705dfc2416492f37a7a68a4f2c0af
   version: 2.4.240919
@@ -3261,6 +3338,13 @@ sha256:336e65aa2ae6ed4690597e4c2cd1af9dd0ba30e00ccd732c1bffdb938d731229:
   build_date: '2026-04-26T08:20:59Z'
   component: ansible-lightspeed-operator-container
   vcs_ref: 8cafcb8a346a15d31a4363e33c51946acab42e02
+sha256:33ba137868fabeed5b88d3b7ba7335a70b5f89164f7fbd20fc348832568d6dcc:
+  image: registry.redhat.io/ansible-automation-platform-27/eda-controller-rhel9-operator@sha256:33ba137868fabeed5b88d3b7ba7335a70b5f89164f7fbd20fc348832568d6dcc
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-10T01:15:21Z'
+  component: automation-eda-controller-operator-container
+  vcs_ref: fdc2239f49d053b44ac9b4816ee01a6c478c837e
 sha256:33f8a2dce99f2eaa7c46dfbdbf1b8d6194a43afa34a9b81a5687de1055842170:
   image: registry.redhat.io/ansible-automation-platform-24/platform-resource-rhel8-operator@sha256:33f8a2dce99f2eaa7c46dfbdbf1b8d6194a43afa34a9b81a5687de1055842170
   version: '2.4'
@@ -3730,6 +3814,13 @@ sha256:3bbc2fde8a90eac990548d512d7a9ad3d3051a87fb5c08f8a36a2ff5cfdb419e:
   build_date: '2026-06-18T00:56:33Z'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: e8aca81b496a510aacb22805e804a8795388654b
+sha256:3bc18f091783d04d748ed775043b2066ac2f509e478187dd934482c8250db091:
+  image: registry.redhat.io/ansible-automation-platform-26/controller-rhel9-operator@sha256:3bc18f091783d04d748ed775043b2066ac2f509e478187dd934482c8250db091
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-09T23:32:58Z'
+  component: automation-controller-operator-container
+  vcs_ref: 96b7943190678e6f859a837abe987f75b05789f5
 sha256:3bcd54957ba5fcc3e542a70f8f9c2127cf5cc22f9f7b4145d461e7aee40146ac:
   image: registry.redhat.io/ansible-automation-platform-25/ee-supported-rhel8@sha256:3bcd54957ba5fcc3e542a70f8f9c2127cf5cc22f9f7b4145d461e7aee40146ac
   version: 1.0.0
@@ -3751,6 +3842,13 @@ sha256:3c4330a2fb115bf2d1623963c11d131b378276d6f3b55b1e5e469d38449eeef2:
   build_date: '2026-09-17T14:00:08Z'
   component: automation-eda-controller-container
   vcs_ref: a86083e1554719b6b97f2d101175cee77f3bb147
+sha256:3cde4aefae9c69b6fd8a1cd55eb3746a1995eada3252b230ca60dfaf0cd97f81:
+  image: registry.redhat.io/ansible-automation-platform-26/mcp-tools-rhel9@sha256:3cde4aefae9c69b6fd8a1cd55eb3746a1995eada3252b230ca60dfaf0cd97f81
+  version: 2.6.20261116
+  release: '1794186349'
+  build_date: '2026-11-13T18:15:30Z'
+  component: ansible-mcp-tools-container
+  vcs_ref: d93e029200299317938cb905ce5cc7acfb1c8d55
 sha256:3d11a39cffb249f26edba33aef1aa78f857087d6b3756b75044a52182e942295:
   image: registry.redhat.io/ansible-automation-platform-27/gateway-rhel9@sha256:3d11a39cffb249f26edba33aef1aa78f857087d6b3756b75044a52182e942295
   version: 2.7.20260715
@@ -3947,6 +4045,13 @@ sha256:3f328b68ab12729a04b4b974792d0913a6531c5b07150727101fde3b8bce35fc:
   build_date: '2026-10-26T22:39:35Z'
   component: automation-gateway-container
   vcs_ref: 891501d2840c3df19f3d615dcf480bf8de516e5a
+sha256:3f647fc646acef83b3eb40ba66129a64f799d01c1b6edfa695a568220d85986e:
+  image: registry.redhat.io/ansible-automation-platform-26/gateway-rhel9@sha256:3f647fc646acef83b3eb40ba66129a64f799d01c1b6edfa695a568220d85986e
+  version: 2.6.20261116
+  release: '1794467051'
+  build_date: '2026-11-13T05:00:51Z'
+  component: automation-gateway-container
+  vcs_ref: b4af84f5870fa7b887bfff779191054db7fe9a08
 sha256:3f6fb1f31d98af18ed0763d6f0d098be016cc828b211b612d9339e7f2734e788:
   image: registry.redhat.io/ansible-automation-platform-24/controller-rhel8@sha256:3f6fb1f31d98af18ed0763d6f0d098be016cc828b211b612d9339e7f2734e788
   version: 4.5.15
@@ -4192,6 +4297,13 @@ sha256:42eed05d0f681deb8d9198bf483bbeda02016c23515f061b828aec71f0ae142f:
   build_date: '2024-06-27T13:50:22'
   component: postgresql-13-container
   vcs_ref: 42234a0cc477e555b78393140b0ffd50c916983b
+sha256:42f51cc1da1f3e5b1413823d6b76a9f0c5297a36ff15ee84bfbf6b41f46307a5:
+  image: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8@sha256:42f51cc1da1f3e5b1413823d6b76a9f0c5297a36ff15ee84bfbf6b41f46307a5
+  version: 2.0.0
+  release: '1794244899'
+  build_date: '2026-11-11T06:34:57Z'
+  component: ee-minimal-container
+  vcs_ref: 7c95ca39f6ede24e9aaec0690de23ee9415f0034
 sha256:430423770062cb58716925d2485e4c99260ccadef37c9c3b89075b7b58dba0f0:
   image: registry.redhat.io/ansible-automation-platform-25/controller-rhel8@sha256:430423770062cb58716925d2485e4c99260ccadef37c9c3b89075b7b58dba0f0
   version: 4.6.3
@@ -4605,6 +4717,13 @@ sha256:482d5b681c902e6c46f77d0ff8668c24f93025d73c6f9f53e758eb16cfbb580d:
   build_date: '2025-02-11T02:52:39'
   component: automation-hub-web-container
   vcs_ref: efca2d8cb84b3620283faf61f6a38c9f20345734
+sha256:4837a4d772bbbc4d63c94954450bbf8d4f64f28229405c29f71d3bdfd4b0555b:
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:4837a4d772bbbc4d63c94954450bbf8d4f64f28229405c29f71d3bdfd4b0555b
+  version: '2.4'
+  release: '2.4'
+  build_date: '2026-11-11T08:30:35Z'
+  component: ansible-automation-platform-operator-bundle-container
+  vcs_ref: 72dcfc1cf3aa8b2a5324513babad3366fed2d61c
 sha256:484e6a5f1b6d81e457de5d1041bca0899bb5829495327383c0177b498dca14a4:
   image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8@sha256:484e6a5f1b6d81e457de5d1041bca0899bb5829495327383c0177b498dca14a4
   version: 1.0.0
@@ -4640,6 +4759,13 @@ sha256:48fa5d8cda7fc00d270d8747c3eaa54ae196f0820d8540074a9c8c61d5e3056f:
   build_date: '2026-08-03T17:14:53Z'
   component: ubi9-minimal-container
   vcs_ref: fed5ae6ccb10c6d16ee2e00c675d23ea0a6c587f
+sha256:49070f74d98752cb2a418d8b0720dbdcf11a65a3939e5d26664d146584715a0c:
+  image: registry.redhat.io/ansible-automation-platform-24/controller-rhel8@sha256:49070f74d98752cb2a418d8b0720dbdcf11a65a3939e5d26664d146584715a0c
+  version: 4.5.39
+  release: '1794244899'
+  build_date: '2026-11-11T06:54:33Z'
+  component: automation-controller-container
+  vcs_ref: c7eba20de5da9d23d50cf14c73b46634b2d29ae6
 sha256:4983a681fc9861b61ad89fd8d5929c2955cd12d89b7c6b8a577cad0dead4ce18:
   image: registry.redhat.io/ansible-automation-platform-27/hub-rhel9@sha256:4983a681fc9861b61ad89fd8d5929c2955cd12d89b7c6b8a577cad0dead4ce18
   version: 4.12.6
@@ -4843,6 +4969,13 @@ sha256:4d2169d221419da141c9adde1fef6ee717d338e0af83ebda7cf64ef1e237de32:
   build_date: '2025-01-09T23:05:14'
   component: ee-supported-container
   vcs_ref: e438a3dfc62c04513aec1dabbe75c34c6d60e0be
+sha256:4d373d63ba46d73718834171fafcb5c101ffc53fa999352dfd60da447f085112:
+  image: registry.redhat.io/rhel8/postgresql-15@sha256:4d373d63ba46d73718834171fafcb5c101ffc53fa999352dfd60da447f085112
+  version: '1'
+  release: '1794315639'
+  build_date: '2026-11-10T13:01:25Z'
+  component: postgresql-15-container
+  vcs_ref: 9002c88b09f065694bf7784e0fc8e8e19b26011b
 sha256:4d45a2c47dc038951dd982864160175956b12d9ca312b930fbd0e117776be7db:
   image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:4d45a2c47dc038951dd982864160175956b12d9ca312b930fbd0e117776be7db
   version: '2.6'
@@ -5239,6 +5372,13 @@ sha256:5360b62df46552990006674e1db82f3711efef8a9426cf6e0209f57df49dc229:
   build_date: '2026-10-30T23:09:10Z'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: 42173ebd4d272098b533ac0d6fb1ee431ea5d0b7
+sha256:5361300b6ba29d52d854b7ae80fe69afd59d3e6d74288b3ac54bab66d215ae42:
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:5361300b6ba29d52d854b7ae80fe69afd59d3e6d74288b3ac54bab66d215ae42
+  version: '2.6'
+  release: '2.6'
+  build_date: '2026-11-14T00:11:37Z'
+  component: ansible-automation-platform-operator-bundle-container
+  vcs_ref: ce42f66b09bdf0b4c69e17068b47c4dc59fdf0cd
 sha256:53637a015ca453de862ee9a17466e936f650d09f4d7108bcf8e37c0a3060cbe8:
   image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8-operator@sha256:53637a015ca453de862ee9a17466e936f650d09f4d7108bcf8e37c0a3060cbe8
   version: '2.4'
@@ -5281,6 +5421,13 @@ sha256:53ae38609933ea51171397af3af40f69165f293c621723f71ba9a48f72003e04:
   build_date: '2025-12-03T21:27:37Z'
   component: automation-gateway-operator-container
   vcs_ref: 91ffdf23845b5c136a43f8e7d2a4e726ff121a9d
+sha256:53b36731c7b4b487b3ce1d133b5a8d911ebcd5b9487960e403259de4eaf674ce:
+  image: registry.redhat.io/ansible-automation-platform-tech-preview/metrics-service-rhel9@sha256:53b36731c7b4b487b3ce1d133b5a8d911ebcd5b9487960e403259de4eaf674ce
+  version: 2.6.20261116
+  release: '1794186349'
+  build_date: '2026-11-12T10:31:20Z'
+  component: automation-metrics-service-container
+  vcs_ref: bc6c8e79088ed0978bee9772f95c6fea735bc970
 sha256:53b5e9bdac6b8608911e2f3954af01eb388904652ddf976bcb9fbf3f081148c3:
   image: registry.redhat.io/ansible-automation-platform-25/eda-controller-ui-rhel8@sha256:53b5e9bdac6b8608911e2f3954af01eb388904652ddf976bcb9fbf3f081148c3
   version: 1.1.8
@@ -5624,6 +5771,13 @@ sha256:57bd5b8bdff5bd0bc6e8ded0861c5b5d053a9dcbcd8b5a1d8ec388b6c2d4b0f7:
   build_date: '2026-07-30T02:00:34Z'
   component: automation-controller-container
   vcs_ref: e59d20b17faa8c431dc09974c95fd8e4731e9fcf
+sha256:57be16848a46f5bb1d554d695178d1c0b6ae5a492d83dd60910d792c8282dfd1:
+  image: registry.redhat.io/ansible-automation-platform-26/eda-controller-rhel9@sha256:57be16848a46f5bb1d554d695178d1c0b6ae5a492d83dd60910d792c8282dfd1
+  version: 1.2.15
+  release: '1794186349'
+  build_date: '2026-11-11T02:19:28Z'
+  component: automation-eda-controller-container
+  vcs_ref: 263a4846113661f5f7bdda2e5663b87e07738196
 sha256:57c99d62696573b90efa86c04e0f9948f6437a7d0e1c9a146627e47eed2111ad:
   image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8@sha256:57c99d62696573b90efa86c04e0f9948f6437a7d0e1c9a146627e47eed2111ad
   version: 4.9.2
@@ -5827,6 +5981,13 @@ sha256:5b195cf0b8eb2262ce81334ee44066fdb5026022803f55bfe607be7d08d4fe43:
   build_date: '2025-07-15T07:24:43'
   component: ubi8-minimal-container
   vcs_ref: e2924fe0f32f1325ce459d36072157429c8c357b
+sha256:5b3f35805932de61c859305d8e36d62d9158ae173e4cd8940b98dc3395f864fd:
+  image: registry.redhat.io/ansible-automation-platform-24/hub-rhel9-operator@sha256:5b3f35805932de61c859305d8e36d62d9158ae173e4cd8940b98dc3395f864fd
+  version: '2.4'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-07T01:55:03Z'
+  component: automation-hub-operator-container
+  vcs_ref: 5fc350799eb943dbed6a6bd104951450467d4c0e
 sha256:5b4de6af44687b101c10dc4694bd2024a64db90afd382713d259c4fddf32f043:
   image: registry.redhat.io/ansible-automation-platform-27/mcp-server-rhel9@sha256:5b4de6af44687b101c10dc4694bd2024a64db90afd382713d259c4fddf32f043
   version: 2.7.20260715
@@ -6639,6 +6800,13 @@ sha256:67048ab5328ba0a7c6b41a740f365010205472402e5c5316eef319f7fc85d361:
   build_date: '2026-10-29T22:35:43Z'
   component: automation-hub-web-container
   vcs_ref: 894ce10758762e2848915330e640025208992b05
+sha256:671381c8a2a70353f787e8c2d8c04d48350a2f5a7ad59981216b33225b6daff0:
+  image: registry.redhat.io/rhel8/redis-6@sha256:671381c8a2a70353f787e8c2d8c04d48350a2f5a7ad59981216b33225b6daff0
+  version: '1'
+  release: '1794314485'
+  build_date: '2026-11-10T12:41:56Z'
+  component: redis-6-container
+  vcs_ref: 796e7eeca4a38bc2d33890498417f15f9073a6a7
 sha256:671bef930411997d57c8f96b89e563590602218c4df61b817727fa5704d3ff70:
   image: registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8@sha256:671bef930411997d57c8f96b89e563590602218c4df61b817727fa5704d3ff70
   version: 1.1.4
@@ -7003,6 +7171,13 @@ sha256:6bdd170a8f905f1675e859482b89b26f5b29f890a18faf5b5631b6b511fc17e5:
   build_date: '2025-01-09T21:34:38'
   component: automation-eda-controller-operator-container
   vcs_ref: 4deb3c0a295baa0bf110ed0452ecaa9c3230fd30
+sha256:6be3393493e8cf7f250396ec267eb5893c8f8a9a4e349166adb9e372d4a74873:
+  image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8@sha256:6be3393493e8cf7f250396ec267eb5893c8f8a9a4e349166adb9e372d4a74873
+  version: 1.0.11
+  release: '1794244899'
+  build_date: '2026-11-10T02:24:35Z'
+  component: automation-eda-controller-container
+  vcs_ref: 22c02ea7db6244a763493f8a7876a423b51f6277
 sha256:6bf8bb1668e6b25b8dc4ea36849707f88edaf550d26895dda3688378bd44afa3:
   image: registry.redhat.io/ansible-automation-platform-25/controller-rhel8-operator@sha256:6bf8bb1668e6b25b8dc4ea36849707f88edaf550d26895dda3688378bd44afa3
   version: '2.5'
@@ -7087,6 +7262,13 @@ sha256:6cd296e5782651725693d373bcc5bcb42345106e4aef5dfec0097cb0cbfb14de:
   build_date: '2026-07-14T21:15:31Z'
   component: automation-eda-controller-container
   vcs_ref: bf07939507a01a19d996d1b3ba5064bff1fcb2d3
+sha256:6cfe357610b965992d1466b45444d1398dc0f0e8c769910d716fd9da224e7397:
+  image: registry.redhat.io/ansible-automation-platform-27/gateway-proxy-rhel9@sha256:6cfe357610b965992d1466b45444d1398dc0f0e8c769910d716fd9da224e7397
+  version: 2.7.0
+  release: '1793836180'
+  build_date: '2026-11-12T19:54:51Z'
+  component: automation-gateway-proxy-container
+  vcs_ref: b48652dda33764122785991bf39bcd041588765b
 sha256:6d030055fba572375ae936c007c20626433a79186439931c5d84fdaefdfbd561:
   image: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9@sha256:6d030055fba572375ae936c007c20626433a79186439931c5d84fdaefdfbd561
   version: 2.6.20260804
@@ -7276,6 +7458,13 @@ sha256:6f4c13984e111199a50f1f6ec86d1ea38c8abcc8e5c23c45c9c595a95562f09f:
   build_date: '2026-10-28T05:09:17Z'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: bc3459add408892e8ea40dec2074404f1fdd48ef
+sha256:6f745de1a0e2638d567ee49de2b376dcd7b4a8694f4906975bc71afb762a0e36:
+  image: registry.redhat.io/ansible-automation-platform-26/hub-rhel9@sha256:6f745de1a0e2638d567ee49de2b376dcd7b4a8694f4906975bc71afb762a0e36
+  version: 4.11.16
+  release: '1793829856'
+  build_date: '2026-11-13T00:27:07Z'
+  component: automation-hub-container
+  vcs_ref: 0c19c86e93da09f838cee62b4d302b3ed82ca6d5
 sha256:6f936afeb315c70500931b4b977fc98b6f04d0efdf2eced896b793b1c93932f6:
   image: registry.redhat.io/ansible-automation-platform-26/platform-resource-rhel9-operator@sha256:6f936afeb315c70500931b4b977fc98b6f04d0efdf2eced896b793b1c93932f6
   version: '2.6'
@@ -7703,6 +7892,13 @@ sha256:76339dd9b2fa68df85a2e92dd2c77a8ada6c12dd532f7b9e0f2941eba0ef77eb:
   build_date: '2025-10-10T23:41:53'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: 533b964b5c80947619ea06d31e8ffdbb552b15e9
+sha256:765c277ce070cec3152532c60286745b4efb177faf6e3cf8c9a9099adb34a09d:
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:765c277ce070cec3152532c60286745b4efb177faf6e3cf8c9a9099adb34a09d
+  version: '2.7'
+  release: '2.7'
+  build_date: '2026-11-13T17:31:08Z'
+  component: ansible-automation-platform-operator-bundle-container
+  vcs_ref: 37a52a7d36ba5581cff6e3242e19400fb93e6f3e
 sha256:7670e41037f023e3fc6ee95d2342787a80077273ab8d30ba6804029ff05b4edc:
   image: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8@sha256:7670e41037f023e3fc6ee95d2342787a80077273ab8d30ba6804029ff05b4edc
   version: 1.0.0
@@ -7822,6 +8018,13 @@ sha256:7821e2f0d445379078c51b797435ffe4a334b5bb6a9d0e8f996868165a3d9b6a:
   build_date: '2024-02-23T07:12:01'
   component: ee-minimal-container
   vcs_ref: b86e84c10760cd00338398daf8773da5406e687e
+sha256:78401533d449ccd7c1a54672b4e18009c3bdefe045be69870d5f0219e34e8b9d:
+  image: registry.redhat.io/ansible-automation-platform-27/ee-minimal-rhel9@sha256:78401533d449ccd7c1a54672b4e18009c3bdefe045be69870d5f0219e34e8b9d
+  version: 1.0.0
+  release: '1793829856'
+  build_date: '2026-11-13T05:44:36Z'
+  component: ee-minimal-container
+  vcs_ref: 9c34b2e86dcb1160e32d3a528021193c4c1e01a5
 sha256:784195ddc1772924976b73e6046714c00cf18cede62c1864ec72895631c3b405:
   image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8@sha256:784195ddc1772924976b73e6046714c00cf18cede62c1864ec72895631c3b405
   version: 1.0.7
@@ -8298,6 +8501,13 @@ sha256:7db7a7f91c5ec88fc41b3c0d31508be48ab87f30f19dde7b4c6f3ebc4cabb0d3:
   build_date: '2026-07-31T00:46:48Z'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: 4088b8012de78a92bb8b548da90a27d3a59b4642
+sha256:7de32fbaea20f79d24b1e29dfc12358a102019f35bea93ce3965e1ba315402a2:
+  image: registry.redhat.io/ansible-automation-platform-26/lightspeed-chatbot-rhel9@sha256:7de32fbaea20f79d24b1e29dfc12358a102019f35bea93ce3965e1ba315402a2
+  version: 2.6.20261116
+  release: '1794467051'
+  build_date: '2026-11-13T19:41:41Z'
+  component: ansible-lightspeed-chatbot-container
+  vcs_ref: 910a9649c0e44aec2994ebb5a0340daebb7c6009
 sha256:7df6b485ae4f53c513ca67dcc44109f8b80e812a8d9069c70fca08bada37b531:
   image: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel8@sha256:7df6b485ae4f53c513ca67dcc44109f8b80e812a8d9069c70fca08bada37b531
   version: 1.0.0
@@ -8501,6 +8711,13 @@ sha256:80bd68410954cf504c020f0e285898172c2dfeeae228cc88f236d8a359389115:
   build_date: '2025-05-29T13:34:05'
   component: postgresql-15-container
   vcs_ref: 214221ead5928b2ec8de2bda252dbf8225046508
+sha256:80e5e29c1b3c1345c3e17e009a371e4668790d942a022b9c38a97a2f263b1d3e:
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:80e5e29c1b3c1345c3e17e009a371e4668790d942a022b9c38a97a2f263b1d3e
+  version: '2.4'
+  release: '2.4'
+  build_date: '2026-11-11T08:30:22Z'
+  component: ansible-automation-platform-operator-bundle-container
+  vcs_ref: 72dcfc1cf3aa8b2a5324513babad3366fed2d61c
 sha256:810a28b4c0eca750b4899e5ea93064fff9c424d00484c07f38655dfbf76f5f06:
   image: registry.redhat.io/ansible-automation-platform-26/controller-rhel9-operator@sha256:810a28b4c0eca750b4899e5ea93064fff9c424d00484c07f38655dfbf76f5f06
   version: '2.6'
@@ -8914,6 +9131,13 @@ sha256:87bcff7fb32c559667752861df79e62d86e6705855583fe90f99ac24c7d0b2a1:
   build_date: '2024-10-28T15:26:24'
   component: ansible-lightspeed-container
   vcs_ref: 9be46651ed18d3c154813b4790bbb5ad2ad26b87
+sha256:87e444927e20479760105951e4a59642916c3b22ba95dca9686f501e4db4858c:
+  image: registry.redhat.io/ansible-automation-platform-24/controller-rhel9-operator@sha256:87e444927e20479760105951e4a59642916c3b22ba95dca9686f501e4db4858c
+  version: '2.4'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-07T02:21:46Z'
+  component: automation-controller-operator-container
+  vcs_ref: ff3a5c89243db95ac38469f4763ad6b8ac6c46bf
 sha256:880dadb7f632ba574721e94aaa1909993ec7b36101001101395a26d1ae379627:
   image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8@sha256:880dadb7f632ba574721e94aaa1909993ec7b36101001101395a26d1ae379627
   version: 1.0.0
@@ -9327,6 +9551,13 @@ sha256:8eb2830d0936237fc13a1f2f7e45aecf90d69043380ad167fad0343632937f41:
   build_date: '2026-08-17T17:26:46Z'
   component: ubi9-minimal-container
   vcs_ref: 6bb838e7904a1c68094d157a898fff623ad3fcb9
+sha256:8eb3c065ac6294fa06d1d14fbbbd8c73c4d6d8bff6c95a640ecbb4e2b5f184fc:
+  image: registry.redhat.io/ansible-automation-platform-27/metrics-service-rhel9-operator@sha256:8eb3c065ac6294fa06d1d14fbbbd8c73c4d6d8bff6c95a640ecbb4e2b5f184fc
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-10T01:42:02Z'
+  component: automation-metrics-operator-container
+  vcs_ref: a62449e437a676f87c8846fb03b4f850cbe10446
 sha256:8eb4bce220776c3ce885d9ee48430094c9bce2943de30fcdc1e080acde6948f9:
   image: registry.redhat.io/ubi8-minimal@sha256:8eb4bce220776c3ce885d9ee48430094c9bce2943de30fcdc1e080acde6948f9
   version: '8.10'
@@ -9712,6 +9943,13 @@ sha256:956144c5f155c9b25193432cdb532898fcca343b1b0d008737cc569886a340c9:
   build_date: '2025-12-14T17:29:51Z'
   component: automation-hub-container
   vcs_ref: 131368de70558539d0dfb5c41010ee9f0743da9a
+sha256:95689582e591ea3490d7d4da6f240e1b5138dacc5883cc87057750b7eaabafc2:
+  image: registry.redhat.io/ubi8/ubi-minimal@sha256:95689582e591ea3490d7d4da6f240e1b5138dacc5883cc87057750b7eaabafc2
+  version: '8.10'
+  release: '1794244899'
+  build_date: '2026-11-09T17:22:46Z'
+  component: ubi8-minimal-container
+  vcs_ref: f746cec940f20a4b9a9639d8139cd4cadbf59a22
 sha256:9572294dc5d229d40551108f6d60005997bb7ea02cdd51e1c71339cb58e0525f:
   image: registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8@sha256:9572294dc5d229d40551108f6d60005997bb7ea02cdd51e1c71339cb58e0525f
   version: 4.9.2
@@ -9747,6 +9985,13 @@ sha256:961aa224525116fd575cff3a37a6465e9c652ee446927dd2bd03249b29469472:
   build_date: '2025-09-17T22:24:31'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: bbd98c3652af9cbdc9d492469e637042b727c59f
+sha256:9634f8d0661d7976ea6953b12a0df462899c75e1a5a25a4006547f5c176383b0:
+  image: registry.redhat.io/ansible-automation-platform-26/hub-web-rhel9@sha256:9634f8d0661d7976ea6953b12a0df462899c75e1a5a25a4006547f5c176383b0
+  version: 4.11.16
+  release: '1793849718'
+  build_date: '2026-11-13T02:37:22Z'
+  component: automation-hub-web-container
+  vcs_ref: 85617563b6b3487386e2395fdf17e61be6edf88f
 sha256:963626626f46e1322214d4984c69c60ee13a970bf56ddd484ef5ddcee8d8fdb5:
   image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9@sha256:963626626f46e1322214d4984c69c60ee13a970bf56ddd484ef5ddcee8d8fdb5
   version: v4.18.0
@@ -9824,6 +10069,13 @@ sha256:974446f9c3a89b6e2e5e2cbaf185e824fffc836e1d13bb66db5ce7848ae2e790:
   build_date: '2026-01-19T09:19:09Z'
   component: automation-controller-operator-container
   vcs_ref: 9dc92e4ee88760182363126947ef52a62eac1619
+sha256:97577eb9e34c5430a1be3384d54708184d5bcecc286843159ebc6bd104c301ad:
+  image: registry.redhat.io/ansible-automation-platform-27/mcp-tools-rhel9@sha256:97577eb9e34c5430a1be3384d54708184d5bcecc286843159ebc6bd104c301ad
+  version: 2.7.20261111
+  release: '1793829856'
+  build_date: '2026-11-13T13:53:26Z'
+  component: ansible-mcp-tools-container
+  vcs_ref: 2242ea8ffe4d7b5c81f1ce1b760a95e5afa73af1
 sha256:97663555a04f7c9f82a6dfb5c6d54f19e7a4b9c38f3f44803079422b2a3d0b99:
   image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:97663555a04f7c9f82a6dfb5c6d54f19e7a4b9c38f3f44803079422b2a3d0b99
   version: '2.4'
@@ -10741,6 +10993,13 @@ sha256:a705087ceef6f4ad2805a9cebf35abf1fa2704db613a7131ad7e152a2ffd729e:
   build_date: '2026-10-14T03:44:22Z'
   component: automation-eda-controller-ui-container
   vcs_ref: 98fc5a485df54d14d9a9ec89452c007f092d7243
+sha256:a707cac9ce21c256f48216591cb834be4c27510633458c202b7d864c8c66d69e:
+  image: registry.redhat.io/ansible-automation-platform-26/mcp-server-rhel9@sha256:a707cac9ce21c256f48216591cb834be4c27510633458c202b7d864c8c66d69e
+  version: 2.6.20261116
+  release: '1793849022'
+  build_date: '2026-11-12T20:13:31Z'
+  component: aap-mcp-server-container
+  vcs_ref: 100663655623293c96d4bc07247743b940a958dc
 sha256:a71bffb020e917a1c82362574c68e2b950b30da9ff6a2bcce39bcbf9d7266201:
   image: registry.redhat.io/ansible-automation-platform-27/metrics-service-rhel9@sha256:a71bffb020e917a1c82362574c68e2b950b30da9ff6a2bcce39bcbf9d7266201
   version: 2.7.20260603
@@ -10783,6 +11042,20 @@ sha256:a79a6ac47a035d8ef64d78f49f9c7c423c02ef6b5474608d0490ea49b076c941:
   build_date: '2026-03-25T04:58:19Z'
   component: ansible-lightspeed-chatbot-container
   vcs_ref: afd109cb864870ee6d33578c0b074878dab15fe7
+sha256:a7a9186f180b6801a521878810052770b97fd70700c01131fff4aec7be173fd5:
+  image: registry.redhat.io/ansible-automation-platform-26/controller-rhel9@sha256:a7a9186f180b6801a521878810052770b97fd70700c01131fff4aec7be173fd5
+  version: 4.7.20
+  release: '1794467051'
+  build_date: '2026-11-13T15:34:35Z'
+  component: automation-controller-container
+  vcs_ref: 45750fa22825fbe441b7b0eede94117603997b7a
+sha256:a7a987f47ba82e72195098e5d0506a7f9112d814172c298a34775fcfac20d100:
+  image: registry.redhat.io/ansible-automation-platform-27/platform-resource-rhel9-operator@sha256:a7a987f47ba82e72195098e5d0506a7f9112d814172c298a34775fcfac20d100
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-12T17:39:25Z'
+  component: platform-resource-operator-container
+  vcs_ref: e0f6da2bb507f365a4f4883ac937d2264ac94014
 sha256:a7b35487c2accd13765168bf373c962fe983f6b1ff5847d741f7994295896c6a:
   image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:a7b35487c2accd13765168bf373c962fe983f6b1ff5847d741f7994295896c6a
   version: '2.4'
@@ -11189,6 +11462,13 @@ sha256:ad6c53f6e97c583e7402ae505d8f9f27d5fe7d9227fb248c701595f86a5b1b31:
   build_date: '2026-03-05T12:31:56Z'
   component: redis-6-container
   vcs_ref: cea465faea6a9689c0174c301725ed6c817098a9
+sha256:ad82ac43f025f9343e1dd676359337562c759346e25a9ecfdd99a24d66d81431:
+  image: registry.redhat.io/ansible-automation-platform-27/platform-resource-runner-rhel9@sha256:ad82ac43f025f9343e1dd676359337562c759346e25a9ecfdd99a24d66d81431
+  version: 1.0.0
+  release: '1793829856'
+  build_date: '2026-11-13T06:46:52Z'
+  component: platform-resource-runner-container
+  vcs_ref: d140c0626fa4439ff6efc849ca44ccd4c87ca373
 sha256:adbd7a13b4bf1349395aef28dd0038f6a0ff009f83683537322918f68ab62a22:
   image: registry.redhat.io/ansible-automation-platform-24/controller-rhel8-operator@sha256:adbd7a13b4bf1349395aef28dd0038f6a0ff009f83683537322918f68ab62a22
   version: '2.4'
@@ -11301,6 +11581,13 @@ sha256:aef2a306cc87a2bdb99c1804584473e13439211f671668fca34cbc86a17fb20a:
   build_date: '2026-06-29T19:31:50Z'
   component: automation-gateway-container
   vcs_ref: 73069192edf6fb6e51e44a0756f61f46df5485cd
+sha256:af07d80e4b2973eb18fecb0aed8d4f287a755c580eedbe2d34592588020d6fb5:
+  image: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel8@sha256:af07d80e4b2973eb18fecb0aed8d4f287a755c580eedbe2d34592588020d6fb5
+  version: 2.4.260325
+  release: '1794244899'
+  build_date: '2026-11-11T05:43:17Z'
+  component: ansible-lightspeed-container
+  vcs_ref: fed6a17448bf10f61fb5693ebc854e14e97c6155
 sha256:af2a28820846c524bb6828c6d6caf7929cbb198f303fbd8d9d0b940dd8226b9d:
   image: registry.redhat.io/ansible-automation-platform-26/mcp-tools-rhel9@sha256:af2a28820846c524bb6828c6d6caf7929cbb198f303fbd8d9d0b940dd8226b9d
   version: 2.6.250924
@@ -11308,6 +11595,13 @@ sha256:af2a28820846c524bb6828c6d6caf7929cbb198f303fbd8d9d0b940dd8226b9d:
   build_date: '2025-12-04T14:33:47Z'
   component: ansible-mcp-tools-container
   vcs_ref: 989f5604cb6cb1fe4e22c767d04740350478e502
+sha256:af2b87187f8efb011f666a3b5789dfa8e8c927bb47e7c3a93ecb8fb3652bcf43:
+  image: registry.redhat.io/ansible-automation-platform-24/platform-resource-runner-rhel8@sha256:af2b87187f8efb011f666a3b5789dfa8e8c927bb47e7c3a93ecb8fb3652bcf43
+  version: '2.4'
+  release: '1794244899'
+  build_date: '2026-11-10T18:36:00Z'
+  component: platform-resource-runner-container
+  vcs_ref: beb908e408b9702bf911e8e66a59808175861574
 sha256:af3acfccb0fca73ab8e698b4f9a407ef6b1921d029878ba50a6d80f72935f602:
   image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:af3acfccb0fca73ab8e698b4f9a407ef6b1921d029878ba50a6d80f72935f602
   version: '2.4'
@@ -11721,6 +12015,13 @@ sha256:b5bc9882d5b7f01ca2cbcdae990d1e9864846eb5cdf79ed95acf9fab28e66c4c:
   build_date: '2025-08-21T00:12:08'
   component: ee-supported-container
   vcs_ref: 0a2d9e67dd80573b6d6ff843ea97c1400eead63f
+sha256:b5c2d69b9ed9a8d712867f52bcce47bd6e77de8556d9066cfea9326a39698a06:
+  image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8@sha256:b5c2d69b9ed9a8d712867f52bcce47bd6e77de8556d9066cfea9326a39698a06
+  version: 2.0.0
+  release: '1794244899'
+  build_date: '2026-11-10T12:09:51Z'
+  component: ee-supported-container
+  vcs_ref: 7d5752b4f1494dd5ca12f8d6347def80e51c997c
 sha256:b5f9d15a185ef16593b5e1780576e0b89d30f63232f4bf00d5a671f7924cf9d4:
   image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8@sha256:b5f9d15a185ef16593b5e1780576e0b89d30f63232f4bf00d5a671f7924cf9d4
   version: 1.0.11
@@ -11728,6 +12029,13 @@ sha256:b5f9d15a185ef16593b5e1780576e0b89d30f63232f4bf00d5a671f7924cf9d4:
   build_date: '2026-07-30T01:35:40Z'
   component: automation-eda-controller-container
   vcs_ref: ccc9cd43d26e9a5f440721dbcf678e8b855056d9
+sha256:b60415c394b03eda372313697bedbb9a2046ac8111c176da797a950d9a608d00:
+  image: registry.redhat.io/ansible-automation-platform-27/metrics-service-rhel9@sha256:b60415c394b03eda372313697bedbb9a2046ac8111c176da797a950d9a608d00
+  version: 2.7.20261116
+  release: '1794467051'
+  build_date: '2026-11-13T15:17:42Z'
+  component: automation-metrics-service-container
+  vcs_ref: 3a1a9ae5587077d81967c8161cda277239c353a6
 sha256:b6224431a7130ea0e5aca92bd9ebc6d2c9a57c06d9c016c0b162d26df31eff49:
   image: registry.redhat.io/ansible-automation-platform-25/lightspeed-rhel8-operator@sha256:b6224431a7130ea0e5aca92bd9ebc6d2c9a57c06d9c016c0b162d26df31eff49
   version: '2.5'
@@ -11770,6 +12078,13 @@ sha256:b6bcfe5e7b6a9601c2322559d0014e2378d7757b2a4d79c1c01b8a5c9b6e4b7d:
   build_date: '2024-08-21T09:14:53'
   component: postgresql-13-container
   vcs_ref: ff14d42880260f9ff8170e6fa5442bd004d25df8
+sha256:b6bf54b0750a0eec1430302c33fd695abb8e9a1df88d5166e90ce00bbb9346ce:
+  image: registry.redhat.io/ansible-automation-platform-27/hub-web-rhel9@sha256:b6bf54b0750a0eec1430302c33fd695abb8e9a1df88d5166e90ce00bbb9346ce
+  version: 4.12.12
+  release: '1794514344'
+  build_date: '2026-11-13T11:13:32Z'
+  component: automation-hub-web-container
+  vcs_ref: 9247163a173f2396374c8b96e9ab855cbbde2afb
 sha256:b6e0076752e08dca5f3c247f0becfd286dba3ae24318282f99c6b2858be7bb3c:
   image: registry.redhat.io/ansible-automation-platform-25/gateway-rhel8@sha256:b6e0076752e08dca5f3c247f0becfd286dba3ae24318282f99c6b2858be7bb3c
   version: 2.5.20260923
@@ -11952,6 +12267,13 @@ sha256:baa20e451a9e52c612695bd799f072fffb0fc8843e6ae6ddd89f88ff51cd2203:
   build_date: '2026-07-30T15:51:50Z'
   component: ansible-lightspeed-chatbot-container
   vcs_ref: 902fb68fc41a8a9e529defe3484320168c4bbf29
+sha256:baafce2d34783a28b4a472779f304e97e00f9d35c99553bc53b068b14344d9a9:
+  image: registry.redhat.io/ubi9-minimal@sha256:baafce2d34783a28b4a472779f304e97e00f9d35c99553bc53b068b14344d9a9
+  version: '9.9'
+  release: '1794467051'
+  build_date: '2026-11-12T07:09:34Z'
+  component: ubi9-minimal-container
+  vcs_ref: c500a3e71632eb6956c45968727fbf5e847c5c1d
 sha256:bacfa6aba8e8c9250cacd36d6dc046f1dbd8926e3e7adad6a18df76875f8460e:
   image: registry.redhat.io/ansible-automation-platform-25/gateway-proxy-rhel8@sha256:bacfa6aba8e8c9250cacd36d6dc046f1dbd8926e3e7adad6a18df76875f8460e
   version: 2.5.10
@@ -12113,6 +12435,13 @@ sha256:bd769e566155d61e13592371167d6fb28acb8a56ffec944fdfb5e3afd9b9dcbd:
   build_date: '2025-02-28T17:37:20'
   component: automation-gateway-proxy-container
   vcs_ref: 36645dc4f09fed446e3249b4ce84cd9c31f36357
+sha256:bdafdb6e539e7465f8e6a0abe263a9fee1ea15edc483ce71c2293722ab4cd39a:
+  image: registry.redhat.io/ansible-automation-platform-27/ee-supported-rhel9@sha256:bdafdb6e539e7465f8e6a0abe263a9fee1ea15edc483ce71c2293722ab4cd39a
+  version: 1.0.0
+  release: '1793829856'
+  build_date: '2026-11-13T08:04:02Z'
+  component: ee-supported-container
+  vcs_ref: 282be4e7c09a46488a6b8ce45274d03014a39695
 sha256:bde780b287830c79150455902f88a8e17836e862d4c42618822a61087d6c3693:
   image: registry.redhat.io/ansible-automation-platform-27/eda-controller-rhel9-operator@sha256:bde780b287830c79150455902f88a8e17836e862d4c42618822a61087d6c3693
   version: '2.7'
@@ -12358,6 +12687,13 @@ sha256:c21c8b6e13bede9274b3fed7f409aaf8bf6d0beb6d95d956f1051b249bb74ee3:
   build_date: '2024-09-12T01:23:50'
   component: ansible-lightspeed-container
   vcs_ref: 9106392e3f7e9540042104153d19603ad3ad65ef
+sha256:c23058cf802c0b64e9497eafd1c82df09fcdf9f776b895f10293bc49dd2efef4:
+  image: registry.redhat.io/ansible-automation-platform-27/eda-controller-rhel9@sha256:c23058cf802c0b64e9497eafd1c82df09fcdf9f776b895f10293bc49dd2efef4
+  version: 1.3.15
+  release: '1793829856'
+  build_date: '2026-11-13T09:09:31Z'
+  component: automation-eda-controller-container
+  vcs_ref: 31382232c78e369a8f5abae7653e0ca0e4f11d8f
 sha256:c274c2b9a8fc71910a423708a7df66a36a42a3c39853844367fc2f3cadf4ed37:
   image: registry.redhat.io/ansible-automation-platform-27/platform-resource-rhel9-operator@sha256:c274c2b9a8fc71910a423708a7df66a36a42a3c39853844367fc2f3cadf4ed37
   version: '2.7'
@@ -13044,6 +13380,20 @@ sha256:cccb4db08735551c697a7b2cbf75812f34500e691f9cdbaea02b30edea292e47:
   build_date: '2025-09-16T23:33:47'
   component: ansible-lightspeed-container
   vcs_ref: 10db325c36632b2fce4efab1abde6653ff6a1126
+sha256:cce513915cd0b91c03ed30b690963f23823bf92bcaad95f502d7fc3c40eb2f84:
+  image: registry.redhat.io/ansible-automation-platform-27/gateway-rhel9@sha256:cce513915cd0b91c03ed30b690963f23823bf92bcaad95f502d7fc3c40eb2f84
+  version: 2.7.20261116
+  release: '1793829856'
+  build_date: '2026-11-13T04:20:29Z'
+  component: automation-gateway-container
+  vcs_ref: 1060eb3dc286cfbc27ebb76db93c6c7cec079df5
+sha256:ccf0eee26ea912286dbd756c1d8ac9a9796782c5f8e9a6f143e460c2a87ad851:
+  image: registry.redhat.io/ansible-automation-platform-26/eda-controller-rhel9-operator@sha256:ccf0eee26ea912286dbd756c1d8ac9a9796782c5f8e9a6f143e460c2a87ad851
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-10T16:13:48Z'
+  component: automation-eda-controller-operator-container
+  vcs_ref: 6df81830a11a5adf1389e726a48aede48c982dc8
 sha256:ccfbe7d5bfa78602a44499339a81fcb17105dfd40b8ff80d57c674beb2b6a9d4:
   image: registry.redhat.io/ansible-automation-platform-25/hub-rhel8@sha256:ccfbe7d5bfa78602a44499339a81fcb17105dfd40b8ff80d57c674beb2b6a9d4
   version: 4.10.9
@@ -13296,6 +13646,20 @@ sha256:d090b565d5d2933ae453eb87c34a2ebb00e09b1b00334a98c771e465dbcea42e:
   build_date: '2026-06-29T22:11:41Z'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: 6ecc100e15cca697fd5670078045c5f011811c2a
+sha256:d0a38d4c030b4ab759333c74710efec0fb03959b8a3212d4bccfa548638470a5:
+  image: registry.redhat.io/rhel9/redis-6@sha256:d0a38d4c030b4ab759333c74710efec0fb03959b8a3212d4bccfa548638470a5
+  version: '1'
+  release: '1794520982'
+  build_date: '2026-11-12T22:03:26Z'
+  component: redis-6-container
+  vcs_ref: 2b163221546ee99b54506199798c645fe7b6b498
+sha256:d0a5b615b62912ab855604f44cb2f7557b7d33c68573407602a0832b48533944:
+  image: registry.redhat.io/ansible-automation-platform-26/gateway-proxy-rhel9@sha256:d0a5b615b62912ab855604f44cb2f7557b7d33c68573407602a0832b48533944
+  version: 2.6.6
+  release: '1794467051'
+  build_date: '2026-11-13T02:57:56Z'
+  component: automation-gateway-proxy-container
+  vcs_ref: eb6282c053f1d61133405f2434964798364a3749
 sha256:d0cdfb694238e2010ebd94d64869a319481d6bdc2d0b78b3f4644c4f7a0b09a2:
   image: registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8-operator@sha256:d0cdfb694238e2010ebd94d64869a319481d6bdc2d0b78b3f4644c4f7a0b09a2
   version: '2.5'
@@ -13317,6 +13681,13 @@ sha256:d0fd71aab7d6432ecbbc74170e1cd4e99bf0eee945933b587e217c40baa4e126:
   build_date: '2025-06-25T16:13:41'
   component: automation-hub-container
   vcs_ref: fc4ed1525386b35e5db0d423d9b8315cd8cce800
+sha256:d10054e15ac428b49152de4036c2c46ebfbfcf21048163e3cfe6ed0e2405798b:
+  image: registry.redhat.io/ansible-automation-platform-26/platform-resource-runner-rhel9@sha256:d10054e15ac428b49152de4036c2c46ebfbfcf21048163e3cfe6ed0e2405798b
+  version: '2.6'
+  release: '1793829856'
+  build_date: '2026-11-13T04:43:28Z'
+  component: platform-resource-runner-container
+  vcs_ref: 2fb32bb3f4bee45e43ba573f0ca1c5c2ef590a54
 sha256:d12b90db2fa8cfa5c4b27a72a0f00b99c63bbfa8515df736652f3cde470d4de4:
   image: registry.redhat.io/ansible-automation-platform-27/controller-rhel9@sha256:d12b90db2fa8cfa5c4b27a72a0f00b99c63bbfa8515df736652f3cde470d4de4
   version: 4.8.12
@@ -13394,6 +13765,13 @@ sha256:d229d4e09b2b788d1ba3413ea7ec15374bd1613d507c285ac1ddc10570b9473f:
   build_date: '2025-09-16T23:33:55'
   component: automation-eda-controller-ui-container
   vcs_ref: 402d810bf8cfa03c04b2d3da7f7089c878a8325f
+sha256:d23329657fb56ace21119592c45801a9f599ee65b0cfc86394918e41e7ab7a9f:
+  image: registry.redhat.io/rhel9/postgresql-15@sha256:d23329657fb56ace21119592c45801a9f599ee65b0cfc86394918e41e7ab7a9f
+  version: '1'
+  release: '1794520203'
+  build_date: '2026-11-12T21:50:40Z'
+  component: postgresql-15-container
+  vcs_ref: ef34dbcf8d0896291fbcabb0ae2c55bb361ccee5
 sha256:d2700c2f976a0f75045735b04ce5289c6d3254b5d438dc8195549cc8b3f3c852:
   image: registry.redhat.io/ansible-automation-platform-26/lightspeed-chatbot-rhel9@sha256:d2700c2f976a0f75045735b04ce5289c6d3254b5d438dc8195549cc8b3f3c852
   version: '2.6'
@@ -13506,6 +13884,13 @@ sha256:d3c6b5c2e2cf8fc802709ae0d7f16f286df12a60f2d163c0d7a47b5f45dfb939:
   build_date: '2024-10-09T22:48:48'
   component: automation-hub-web-container
   vcs_ref: 70e4a2e557525622eb182763027a83664fbd6cfa
+sha256:d3eafd959e4954974caaae4b8f4cc9010eac9c5d45774416422c3493aa8a9bbc:
+  image: registry.redhat.io/ansible-automation-platform-tech-preview/metrics-service-rhel9-operator@sha256:d3eafd959e4954974caaae4b8f4cc9010eac9c5d45774416422c3493aa8a9bbc
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-09T21:59:21Z'
+  component: automation-metrics-operator-container
+  vcs_ref: fa0783d184ad3be536a0b6ef123616fa91af2af4
 sha256:d3f6ca185cc1abb53f35e936c71d2c9d6a8d8576bedeb8a10b4179e02213bfa3:
   image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:d3f6ca185cc1abb53f35e936c71d2c9d6a8d8576bedeb8a10b4179e02213bfa3
   version: '2.4'
@@ -13534,6 +13919,13 @@ sha256:d428b681c66e6f3698a997dfa8b1159148e43e8c0c54d4c8482be2fb1f81d2f4:
   build_date: '2026-01-16T19:35:46Z'
   component: ansible-automation-platform-operator-bundle-container
   vcs_ref: 5c75d58add55792367d629d4a70a8acc00d5fd24
+sha256:d431a2b077d96f9ad070a8e3a4080c52193b8a23c35d2bdc983ef9d5dfc3182f:
+  image: registry.redhat.io/ansible-automation-platform-26/platform-resource-rhel9-operator@sha256:d431a2b077d96f9ad070a8e3a4080c52193b8a23c35d2bdc983ef9d5dfc3182f
+  version: '2.6'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-12T23:02:05Z'
+  component: platform-resource-operator-container
+  vcs_ref: 71636de51285b2416e09f39e42e1a96b800f39b5
 sha256:d43a29244f0e079c7818912a3380adb1cf33cbccfdb279f1ef8ca8c4d20152eb:
   image: registry.redhat.io/ansible-automation-platform-25/lightspeed-rhel9-operator@sha256:d43a29244f0e079c7818912a3380adb1cf33cbccfdb279f1ef8ca8c4d20152eb
   version: '2.5'
@@ -13639,6 +14031,13 @@ sha256:d67b274db01420011765c38e3841be0f210a6b708f44521e88e346fd23083e78:
   build_date: '2026-03-26T00:15:54Z'
   component: automation-hub-operator-container
   vcs_ref: 97e69d60a5d39012260abb91dfe9340cfb8b7c58
+sha256:d73bc9ec2fdbfc3221cff08260c83814d1df38d66363bf84f4faafafba7fc5d8:
+  image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel9-operator@sha256:d73bc9ec2fdbfc3221cff08260c83814d1df38d66363bf84f4faafafba7fc5d8
+  version: '2.4'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-07T01:58:07Z'
+  component: automation-eda-controller-operator-container
+  vcs_ref: bb69b84f0d32446c40a0d05d92d966070906fc74
 sha256:d77101384b94a0306ae9b1dbaf8be6e5ee9eeb5c2e57ebe8189a2e2bac9fa9f7:
   image: registry.redhat.io/ansible-automation-platform-26/hub-rhel9@sha256:d77101384b94a0306ae9b1dbaf8be6e5ee9eeb5c2e57ebe8189a2e2bac9fa9f7
   version: 4.11.4
@@ -13772,6 +14171,13 @@ sha256:d9cd07c7f90ca37e0636c10766775823fcc8062a5484d5aeb43ed3ccbdcf4c63:
   build_date: '2026-10-30T07:31:55Z'
   component: automation-eda-controller-ui-container
   vcs_ref: 7a976492efd83a66432f95f9dd09ba650e9ffa1f
+sha256:d9ed90020dd227076c68fb8a47206fc9a8ab13f7803d74d153335d956fe5ac79:
+  image: registry.redhat.io/ansible-automation-platform-24/lightspeed-rhel9-operator@sha256:d9ed90020dd227076c68fb8a47206fc9a8ab13f7803d74d153335d956fe5ac79
+  version: '2.4'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-07T02:14:20Z'
+  component: ansible-lightspeed-operator-container
+  vcs_ref: ee53be3f15eb8d055844319c4d9e7f64018e9897
 sha256:da07a7da90e88d6149a8af79db47caf309e314912d4242f13d240deb4ac9e861:
   image: registry.redhat.io/ansible-automation-platform-27/gateway-rhel9-operator@sha256:da07a7da90e88d6149a8af79db47caf309e314912d4242f13d240deb4ac9e861
   version: '2.7'
@@ -13895,6 +14301,13 @@ sha256:dc165ec26449be9c5dcf8cf0ee7e2f135c435d9a0b8b33437b00499a314b65c3:
   build_date: '2025-05-28T13:25:50'
   component: automation-controller-operator-container
   vcs_ref: a6e2d3abaafc0314c09ceea4061525d86da1e727
+sha256:dc1ef795601b4ce1d0028ae5c04419b5bfdaed6d2eaa8f469478a31a1e678504:
+  image: registry.redhat.io/ansible-automation-platform-27/hub-rhel9-operator@sha256:dc1ef795601b4ce1d0028ae5c04419b5bfdaed6d2eaa8f469478a31a1e678504
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-07T01:57:59Z'
+  component: automation-hub-operator-container
+  vcs_ref: 59aafc0b124d4e4a7a33c960ba36223fb320d6d6
 sha256:dc387b356283133272f15aca7e5bf3f3e15c380cad178d2cc7696200ba5aafaa:
   image: registry.redhat.io/ansible-automation-platform-26/controller-rhel9-operator@sha256:dc387b356283133272f15aca7e5bf3f3e15c380cad178d2cc7696200ba5aafaa
   version: '2.6'
@@ -13902,6 +14315,13 @@ sha256:dc387b356283133272f15aca7e5bf3f3e15c380cad178d2cc7696200ba5aafaa:
   build_date: '2026-03-26T00:13:53Z'
   component: automation-controller-operator-container
   vcs_ref: c8f5b42b06e4bbc937abec2511b98549a9d4d02d
+sha256:dc544cb57777d4cc9a4187ac3b2e143da41d9d1e70142763baa2fcce15b6721a:
+  image: registry.redhat.io/ansible-automation-platform-26/ee-minimal-rhel9@sha256:dc544cb57777d4cc9a4187ac3b2e143da41d9d1e70142763baa2fcce15b6721a
+  version: 2.0.0
+  release: '1793829856'
+  build_date: '2026-11-12T01:12:24Z'
+  component: ee-minimal-container
+  vcs_ref: cdfd93efc6d7e1bf4e7ffd7cf7c7e8f3cab830c0
 sha256:dc5df1949cb1fc09c6d84860e141eaecfd5b3016939547c17fb51b084d09f9de:
   image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8@sha256:dc5df1949cb1fc09c6d84860e141eaecfd5b3016939547c17fb51b084d09f9de
   version: 1.0.7
@@ -13930,6 +14350,13 @@ sha256:dc86dc2b871dbe4d2476dc4cf92dde44a5ba50a32ede1d18c8a9c5612b20b1c9:
   build_date: '2026-09-16T17:41:10Z'
   component: automation-eda-controller-ui-container
   vcs_ref: 092984963ceef6bafc1a1b9406099effeac9fef4
+sha256:dcf51417d04e0f0f1d0efe25d12f764ddea07f0401bd6fd668a9547dcc92ec9a:
+  image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9@sha256:dcf51417d04e0f0f1d0efe25d12f764ddea07f0401bd6fd668a9547dcc92ec9a
+  version: v4.18.0
+  release: 202610271721.p2.gf72b2ec.assembly.stream.el9
+  build_date: '2026-10-27T22:36:54Z'
+  component: kube-rbac-proxy-container
+  vcs_ref: 09752a246c493f6476798e8ecb184a3efc09911e
 sha256:dd3f8360adf1046046be9fc38b1506d7628a33d60cb41b8447445f09bb628661:
   image: registry.redhat.io/ansible-automation-platform-26/lightspeed-chatbot-rhel9@sha256:dd3f8360adf1046046be9fc38b1506d7628a33d60cb41b8447445f09bb628661
   version: '2.6'
@@ -14161,6 +14588,13 @@ sha256:e018689bbc42d69447117a0ca10d963fb4686999e008ac0cc01431e382268267:
   build_date: '2024-04-18T18:01:00'
   component: ee-supported-container
   vcs_ref: aa2a08e33e1fe967f2259cb04acae07bdaad6da6
+sha256:e0463a03b1e8533d567be90a9707e471809441993f713f90935ae5aa7f265b98:
+  image: registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8@sha256:e0463a03b1e8533d567be90a9707e471809441993f713f90935ae5aa7f265b98
+  version: 4.9.8
+  release: '1794313724'
+  build_date: '2026-11-11T00:32:09Z'
+  component: automation-hub-web-container
+  vcs_ref: edbfa91412c269a7b645b55097bc2d20b2c0291d
 sha256:e04c43ab601b06dcfec45209c86c9e80b3ff737c4b6b41664cc8ad14ee013fb0:
   image: registry.redhat.io/ansible-automation-platform-24/hub-rhel8@sha256:e04c43ab601b06dcfec45209c86c9e80b3ff737c4b6b41664cc8ad14ee013fb0
   version: 4.9.3
@@ -14273,6 +14707,13 @@ sha256:e1bfda943b1b1c1da5b275cc254a4fae982ab52c716dc2a7759081d59db0eaa0:
   build_date: '2025-05-15T20:10:55'
   component: ee-supported-container
   vcs_ref: d40ce35cc3926f4f507fa4587bcae0870bb83be3
+sha256:e1ddf5436e58d4f0d546c07b72f1946182937d4fcc1907c440cefa34a9f69fbb:
+  image: registry.redhat.io/ansible-automation-platform-27/controller-rhel9@sha256:e1ddf5436e58d4f0d546c07b72f1946182937d4fcc1907c440cefa34a9f69fbb
+  version: 4.8.14
+  release: '1793829856'
+  build_date: '2026-11-13T03:55:26Z'
+  component: automation-controller-container
+  vcs_ref: 463c7e64f4c1f2c0fd364b69f16a975f02865734
 sha256:e1e13054cce72ae6f1421b700e4799b32f9f4b790060f82641e7727cc5699edd:
   image: registry.redhat.io/ansible-automation-platform-24/hub-rhel9-operator@sha256:e1e13054cce72ae6f1421b700e4799b32f9f4b790060f82641e7727cc5699edd
   version: '2.4'
@@ -14749,6 +15190,13 @@ sha256:ea13c125593c7200a28607561b3874eff09e3248b5884c2265db78c347e65cfe:
   build_date: '2026-09-09T00:15:40Z'
   component: ansible-lightspeed-operator-container
   vcs_ref: a4ecfc8a19c9782eef2315b3a64ae364a67c53f7
+sha256:ea1797103b2ca34ad59d9314e60573b284d378716b46b649f45a67bd306e26b3:
+  image: registry.redhat.io/ansible-automation-platform-27/lightspeed-rhel9@sha256:ea1797103b2ca34ad59d9314e60573b284d378716b46b649f45a67bd306e26b3
+  version: 2.7.20261116
+  release: '1793829856'
+  build_date: '2026-11-13T14:14:36Z'
+  component: ansible-lightspeed-container
+  vcs_ref: 24494a716e049ee18dfd0bac2e04b60794027a5d
 sha256:ea2a1424b11c1f331ffca83df60ad3aa88b3d27b0bb26a173d01f4156a8e3c83:
   image: registry.redhat.io/ansible-automation-platform-27/metrics-service-rhel9-operator@sha256:ea2a1424b11c1f331ffca83df60ad3aa88b3d27b0bb26a173d01f4156a8e3c83
   version: '2.7'
@@ -14819,6 +15267,13 @@ sha256:eaf23b74ea4afcd0b12cac98f3855201e4f367df2acc9962bd07ceac4a618f09:
   build_date: '2026-07-13T18:58:59Z'
   component: automation-metrics-service-container
   vcs_ref: 80034e85453d1821256e567e7762f59ff48743cc
+sha256:eaff8434bfbdae1532ee135d7bc4fe1b8b30f7d5c7a73e5cb710480f2a6f896d:
+  image: registry.redhat.io/ansible-automation-platform-27/mcp-server-rhel9@sha256:eaff8434bfbdae1532ee135d7bc4fe1b8b30f7d5c7a73e5cb710480f2a6f896d
+  version: 2.7.20261111
+  release: '1793849022'
+  build_date: '2026-11-12T14:52:36Z'
+  component: aap-mcp-server-container
+  vcs_ref: 78e5738372597682c7dddc2c954c3ba3728728de
 sha256:eb29d277b7a7ad59b918ae7635e889599b55b86cad1d84ba8589de66fd48cecd:
   image: registry.redhat.io/ansible-automation-platform-26/ee-supported-rhel9@sha256:eb29d277b7a7ad59b918ae7635e889599b55b86cad1d84ba8589de66fd48cecd
   version: 2.0.0
@@ -14826,6 +15281,13 @@ sha256:eb29d277b7a7ad59b918ae7635e889599b55b86cad1d84ba8589de66fd48cecd:
   build_date: '2026-10-14T10:37:00Z'
   component: ee-supported-container
   vcs_ref: 6cc36eaa3a6cd5540def112cd2cd2599ae084a9d
+sha256:eb2bac993e5c7ae1f239f4ac87a747dfb6abe8cb3bf72180b09e9f926f937dca:
+  image: registry.redhat.io/ansible-automation-platform-27/lightspeed-chatbot-rhel9@sha256:eb2bac993e5c7ae1f239f4ac87a747dfb6abe8cb3bf72180b09e9f926f937dca
+  version: 2.7.20261019
+  release: '1794467051'
+  build_date: '2026-11-13T05:40:56Z'
+  component: ansible-lightspeed-chatbot-container
+  vcs_ref: 39a2ed033ce0730daae759cef2c32cc2c939157d
 sha256:eb2d3b4644ca4c5ddd82d56b386ec251b3347eb7c73bf36c15936a6f600bf060:
   image: registry.redhat.io/ansible-automation-platform-27/mcp-tools-rhel9@sha256:eb2d3b4644ca4c5ddd82d56b386ec251b3347eb7c73bf36c15936a6f600bf060
   version: 2.7.20260914
@@ -14910,6 +15372,13 @@ sha256:ebf2f051c1c1e178b1fd83c89dcabe22876760c7aead5d427311d7b6015c7569:
   build_date: '2025-10-10T21:59:12'
   component: automation-eda-controller-ui-container
   vcs_ref: 6346e6dae3bde25fd99832c9b0a58efaecef33e4
+sha256:ebf96190a092b7ca8979fd6aa00e73bcbccf5e58f4ae8b35d27180b574d5c437:
+  image: registry.redhat.io/ansible-automation-platform-24/platform-resource-rhel9-operator@sha256:ebf96190a092b7ca8979fd6aa00e73bcbccf5e58f4ae8b35d27180b574d5c437
+  version: '2.4'
+  release: 202611030126.p2.gbc7aeec.assembly.stream.el9
+  build_date: '2026-11-10T10:10:56Z'
+  component: platform-resource-operator-container
+  vcs_ref: 2b5e93adc196077384a4c0c030a221a1e33a7b8f
 sha256:ec037d2f8c5326664e28385436b548dd89699f9a0ed87f8dc3dc72d5296024b0:
   image: registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8-operator@sha256:ec037d2f8c5326664e28385436b548dd89699f9a0ed87f8dc3dc72d5296024b0
   version: '2.4'
@@ -14952,6 +15421,13 @@ sha256:ecaf9258d14bf899dd778e9153ca4da8a79d8db199d4d0392e31dd725af2c1b3:
   build_date: '2026-10-14T01:35:45Z'
   component: automation-controller-container
   vcs_ref: 673d54f3b8ff1bf50f1f2aaf2e09ac48dfb2e57a
+sha256:ecb690bf760a79813f56cbb874401621897e4abd51dfcd0875ec95f18ec9f838:
+  image: registry.redhat.io/ansible-automation-platform-27/gateway-rhel9-operator@sha256:ecb690bf760a79813f56cbb874401621897e4abd51dfcd0875ec95f18ec9f838
+  version: '2.7'
+  release: 202611041431.p2.g610e511.assembly.stream.el9
+  build_date: '2026-11-10T01:58:42Z'
+  component: automation-gateway-operator-container
+  vcs_ref: 8b1955a96cc47f20286eccc33fc5af0f738a383e
 sha256:ecb7f5589c307391d868cc55aff090077e9303da0eaf2be25c4c6e1ccb8870b8:
   image: registry.redhat.io/ansible-automation-platform-27/gateway-proxy-rhel9@sha256:ecb7f5589c307391d868cc55aff090077e9303da0eaf2be25c4c6e1ccb8870b8
   version: 2.7.0
@@ -16072,6 +16548,13 @@ sha256:fc67e07764d83e592009a6cb0318d5542910f249863a147f8b43a339835137e8:
   build_date: '2025-06-25T23:22:43'
   component: ee-minimal-container
   vcs_ref: 5232ceda9b3d8b8c5bb068b1a3684c4b247b3904
+sha256:fc7cc2487b3114c418d139c53bbb84fa95c68abcd469e940f942f6cf2f70c565:
+  image: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9@sha256:fc7cc2487b3114c418d139c53bbb84fa95c68abcd469e940f942f6cf2f70c565
+  version: 2.6.20261116
+  release: '1793829856'
+  build_date: '2026-11-13T17:38:40Z'
+  component: ansible-lightspeed-container
+  vcs_ref: 8ef1d0ae1ab6540cd1b9781d310b661708b149f9
 sha256:fc900faa7ac2c4160d2c93079a9f57c370beeed838b52ab0f5c27ab305878c26:
   image: registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8@sha256:fc900faa7ac2c4160d2c93079a9f57c370beeed838b52ab0f5c27ab305878c26
   version: 1.0.7
@@ -16296,6 +16779,13 @@ sha256:fece6795d24aed2d5a6d461a87f6a664cc630bfdd659cc535f4a0f8beaba57d5:
   build_date: '2026-08-03T17:46:18Z'
   component: ee-minimal-container
   vcs_ref: 84d3936d8ef688d85daef53fbf6b11f56df9ba9c
+sha256:fefda58f8d61012e9d91bd807515cc2e0bedd7923ee6a94ef214c690e54b047d:
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:fefda58f8d61012e9d91bd807515cc2e0bedd7923ee6a94ef214c690e54b047d
+  version: '2.7'
+  release: '2.7'
+  build_date: '2026-11-13T17:30:47Z'
+  component: ansible-automation-platform-operator-bundle-container
+  vcs_ref: 37a52a7d36ba5581cff6e3242e19400fb93e6f3e
 sha256:ffa1378136aee98a8c01e4b0faef32aa0a4d46350978b51bf0240721f58c5ef4:
   image: registry.redhat.io/ansible-automation-platform-27/eda-controller-rhel9-operator@sha256:ffa1378136aee98a8c01e4b0faef32aa0a4d46350978b51bf0240721f58c5ef4
   version: '2.7'
@@ -16310,6 +16800,13 @@ sha256:ffb8631c95b6124b88a1ba2ad06d5883b58a22821de6b2b955669e033bbaefe4:
   build_date: '2026-08-16T08:10:52Z'
   component: automation-controller-operator-container
   vcs_ref: 4df0c5e1a92a4e67dd961f31375b508bbac836af
+sha256:ffbd91153bfa661ed9c6f65256ed850974e87813a70857b36f5c3a3d2313599f:
+  image: registry.redhat.io/ansible-automation-platform-27/eda-controller-ui-rhel9@sha256:ffbd91153bfa661ed9c6f65256ed850974e87813a70857b36f5c3a3d2313599f
+  version: 1.3.15
+  release: '1794514344'
+  build_date: '2026-11-13T14:51:41Z'
+  component: automation-eda-controller-ui-container
+  vcs_ref: 0a1cfcd8209bdde19c9fc7cf6da06c5e6c6939a2
 sha256:ffdee937e9726f3214bd3ba2070487291b0e43d53301ca16900b8af905c680d5:
   image: registry.redhat.io/rhel8/postgresql-15@sha256:ffdee937e9726f3214bd3ba2070487291b0e43d53301ca16900b8af905c680d5
   version: '1'

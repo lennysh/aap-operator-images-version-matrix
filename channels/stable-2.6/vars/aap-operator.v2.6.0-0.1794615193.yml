@@ -1,0 +1,181 @@
+---
+csv_name: aap-operator.v2.6.0-0.1794615193
+package: ansible-automation-platform-operator
+channel: stable-2.6
+operator_version: 2.6.0+0.1794615193
+build_date: '2026-11-14'
+replaces: aap-operator.v2.6.0-0.1793870311
+skip_range: '>=2.4.0-0.1727257740 <2.6.1'
+skips: []
+bundle_image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:5361300b6ba29d52d854b7ae80fe69afd59d3e6d74288b3ac54bab66d215ae42
+ocp_indexes:
+- '4.14'
+- '4.16'
+- '4.18'
+- '4.19'
+- '4.20'
+- '4.21'
+- '4.22'
+images:
+- name: automation-controller-container
+  image: registry.redhat.io/ansible-automation-platform-26/controller-rhel9@sha256:a7a9186f180b6801a521878810052770b97fd70700c01131fff4aec7be173fd5
+  repository: registry.redhat.io/ansible-automation-platform-26/controller-rhel9
+  tag: ''
+  digest: sha256:a7a9186f180b6801a521878810052770b97fd70700c01131fff4aec7be173fd5
+  source: relatedImages
+- name: automation-controller-operator-container
+  image: registry.redhat.io/ansible-automation-platform-26/controller-rhel9-operator@sha256:3bc18f091783d04d748ed775043b2066ac2f509e478187dd934482c8250db091
+  repository: registry.redhat.io/ansible-automation-platform-26/controller-rhel9-operator
+  tag: ''
+  digest: sha256:3bc18f091783d04d748ed775043b2066ac2f509e478187dd934482c8250db091
+  source: relatedImages
+- name: automation-eda-controller-container
+  image: registry.redhat.io/ansible-automation-platform-26/eda-controller-rhel9@sha256:57be16848a46f5bb1d554d695178d1c0b6ae5a492d83dd60910d792c8282dfd1
+  repository: registry.redhat.io/ansible-automation-platform-26/eda-controller-rhel9
+  tag: ''
+  digest: sha256:57be16848a46f5bb1d554d695178d1c0b6ae5a492d83dd60910d792c8282dfd1
+  source: relatedImages
+- name: automation-eda-controller-operator-container
+  image: registry.redhat.io/ansible-automation-platform-26/eda-controller-rhel9-operator@sha256:ccf0eee26ea912286dbd756c1d8ac9a9796782c5f8e9a6f143e460c2a87ad851
+  repository: registry.redhat.io/ansible-automation-platform-26/eda-controller-rhel9-operator
+  tag: ''
+  digest: sha256:ccf0eee26ea912286dbd756c1d8ac9a9796782c5f8e9a6f143e460c2a87ad851
+  source: relatedImages
+- name: automation-eda-ui-container
+  image: registry.redhat.io/ansible-automation-platform-26/eda-controller-ui-rhel9@sha256:30a7a8de816b816b32abcaeb6e3599cf1aa12f825862c6f552f237901a1cccaa
+  repository: registry.redhat.io/ansible-automation-platform-26/eda-controller-ui-rhel9
+  tag: ''
+  digest: sha256:30a7a8de816b816b32abcaeb6e3599cf1aa12f825862c6f552f237901a1cccaa
+  source: relatedImages
+- name: ee-minimal-rhel9-container
+  image: registry.redhat.io/ansible-automation-platform-26/ee-minimal-rhel9@sha256:dc544cb57777d4cc9a4187ac3b2e143da41d9d1e70142763baa2fcce15b6721a
+  repository: registry.redhat.io/ansible-automation-platform-26/ee-minimal-rhel9
+  tag: ''
+  digest: sha256:dc544cb57777d4cc9a4187ac3b2e143da41d9d1e70142763baa2fcce15b6721a
+  source: relatedImages
+- name: ee-supported-rhel9-container
+  image: registry.redhat.io/ansible-automation-platform-26/ee-supported-rhel9@sha256:2a12d5672ef8e6caa2c2d6e555abbefd88368357ee6258f2f6a1c46d7ee689c6
+  repository: registry.redhat.io/ansible-automation-platform-26/ee-supported-rhel9
+  tag: ''
+  digest: sha256:2a12d5672ef8e6caa2c2d6e555abbefd88368357ee6258f2f6a1c46d7ee689c6
+  source: relatedImages
+- name: automation-gateway-proxy-container
+  image: registry.redhat.io/ansible-automation-platform-26/gateway-proxy-rhel9@sha256:d0a5b615b62912ab855604f44cb2f7557b7d33c68573407602a0832b48533944
+  repository: registry.redhat.io/ansible-automation-platform-26/gateway-proxy-rhel9
+  tag: ''
+  digest: sha256:d0a5b615b62912ab855604f44cb2f7557b7d33c68573407602a0832b48533944
+  source: relatedImages
+- name: automation-gateway-container
+  image: registry.redhat.io/ansible-automation-platform-26/gateway-rhel9@sha256:3f647fc646acef83b3eb40ba66129a64f799d01c1b6edfa695a568220d85986e
+  repository: registry.redhat.io/ansible-automation-platform-26/gateway-rhel9
+  tag: ''
+  digest: sha256:3f647fc646acef83b3eb40ba66129a64f799d01c1b6edfa695a568220d85986e
+  source: relatedImages
+- name: automation-gateway-operator-container
+  image: registry.redhat.io/ansible-automation-platform-26/gateway-rhel9-operator@sha256:04a5a0242b676551825241500f43a4faea6bca489b2af354db7eb3c80364e11a
+  repository: registry.redhat.io/ansible-automation-platform-26/gateway-rhel9-operator
+  tag: ''
+  digest: sha256:04a5a0242b676551825241500f43a4faea6bca489b2af354db7eb3c80364e11a
+  source: relatedImages
+- name: automation-hub-container
+  image: registry.redhat.io/ansible-automation-platform-26/hub-rhel9@sha256:6f745de1a0e2638d567ee49de2b376dcd7b4a8694f4906975bc71afb762a0e36
+  repository: registry.redhat.io/ansible-automation-platform-26/hub-rhel9
+  tag: ''
+  digest: sha256:6f745de1a0e2638d567ee49de2b376dcd7b4a8694f4906975bc71afb762a0e36
+  source: relatedImages
+- name: automation-hub-operator-container
+  image: registry.redhat.io/ansible-automation-platform-26/hub-rhel9-operator@sha256:20df0b9841f328a4449fecc70ea45f266e65e545d94eb60935f5394e08ba19fc
+  repository: registry.redhat.io/ansible-automation-platform-26/hub-rhel9-operator
+  tag: ''
+  digest: sha256:20df0b9841f328a4449fecc70ea45f266e65e545d94eb60935f5394e08ba19fc
+  source: relatedImages
+- name: automation-hub-web-container
+  image: registry.redhat.io/ansible-automation-platform-26/hub-web-rhel9@sha256:9634f8d0661d7976ea6953b12a0df462899c75e1a5a25a4006547f5c176383b0
+  repository: registry.redhat.io/ansible-automation-platform-26/hub-web-rhel9
+  tag: ''
+  digest: sha256:9634f8d0661d7976ea6953b12a0df462899c75e1a5a25a4006547f5c176383b0
+  source: relatedImages
+- name: ansible-lightspeed-chatbot-container
+  image: registry.redhat.io/ansible-automation-platform-26/lightspeed-chatbot-rhel9@sha256:7de32fbaea20f79d24b1e29dfc12358a102019f35bea93ce3965e1ba315402a2
+  repository: registry.redhat.io/ansible-automation-platform-26/lightspeed-chatbot-rhel9
+  tag: ''
+  digest: sha256:7de32fbaea20f79d24b1e29dfc12358a102019f35bea93ce3965e1ba315402a2
+  source: relatedImages
+- name: ansible-lightspeed-container
+  image: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9@sha256:fc7cc2487b3114c418d139c53bbb84fa95c68abcd469e940f942f6cf2f70c565
+  repository: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9
+  tag: ''
+  digest: sha256:fc7cc2487b3114c418d139c53bbb84fa95c68abcd469e940f942f6cf2f70c565
+  source: relatedImages
+- name: ansible-lightspeed-operator-container
+  image: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9-operator@sha256:11c0b3229f892edf5be19de37bec3b276c5ada1e21edcbe95636098904face6a
+  repository: registry.redhat.io/ansible-automation-platform-26/lightspeed-rhel9-operator
+  tag: ''
+  digest: sha256:11c0b3229f892edf5be19de37bec3b276c5ada1e21edcbe95636098904face6a
+  source: relatedImages
+- name: aap-mcp-server-container
+  image: registry.redhat.io/ansible-automation-platform-26/mcp-server-rhel9@sha256:a707cac9ce21c256f48216591cb834be4c27510633458c202b7d864c8c66d69e
+  repository: registry.redhat.io/ansible-automation-platform-26/mcp-server-rhel9
+  tag: ''
+  digest: sha256:a707cac9ce21c256f48216591cb834be4c27510633458c202b7d864c8c66d69e
+  source: relatedImages
+- name: ansible-mcp-tools-container
+  image: registry.redhat.io/ansible-automation-platform-26/mcp-tools-rhel9@sha256:3cde4aefae9c69b6fd8a1cd55eb3746a1995eada3252b230ca60dfaf0cd97f81
+  repository: registry.redhat.io/ansible-automation-platform-26/mcp-tools-rhel9
+  tag: ''
+  digest: sha256:3cde4aefae9c69b6fd8a1cd55eb3746a1995eada3252b230ca60dfaf0cd97f81
+  source: relatedImages
+- name: platform-resource-operator-container
+  image: registry.redhat.io/ansible-automation-platform-26/platform-resource-rhel9-operator@sha256:d431a2b077d96f9ad070a8e3a4080c52193b8a23c35d2bdc983ef9d5dfc3182f
+  repository: registry.redhat.io/ansible-automation-platform-26/platform-resource-rhel9-operator
+  tag: ''
+  digest: sha256:d431a2b077d96f9ad070a8e3a4080c52193b8a23c35d2bdc983ef9d5dfc3182f
+  source: relatedImages
+- name: platform-resource-runner-container
+  image: registry.redhat.io/ansible-automation-platform-26/platform-resource-runner-rhel9@sha256:d10054e15ac428b49152de4036c2c46ebfbfcf21048163e3cfe6ed0e2405798b
+  repository: registry.redhat.io/ansible-automation-platform-26/platform-resource-runner-rhel9
+  tag: ''
+  digest: sha256:d10054e15ac428b49152de4036c2c46ebfbfcf21048163e3cfe6ed0e2405798b
+  source: relatedImages
+- name: automation-metrics-service-container
+  image: registry.redhat.io/ansible-automation-platform-tech-preview/metrics-service-rhel9@sha256:53b36731c7b4b487b3ce1d133b5a8d911ebcd5b9487960e403259de4eaf674ce
+  repository: registry.redhat.io/ansible-automation-platform-tech-preview/metrics-service-rhel9
+  tag: ''
+  digest: sha256:53b36731c7b4b487b3ce1d133b5a8d911ebcd5b9487960e403259de4eaf674ce
+  source: relatedImages
+- name: automation-metrics-operator-container
+  image: registry.redhat.io/ansible-automation-platform-tech-preview/metrics-service-rhel9-operator@sha256:d3eafd959e4954974caaae4b8f4cc9010eac9c5d45774416422c3493aa8a9bbc
+  repository: registry.redhat.io/ansible-automation-platform-tech-preview/metrics-service-rhel9-operator
+  tag: ''
+  digest: sha256:d3eafd959e4954974caaae4b8f4cc9010eac9c5d45774416422c3493aa8a9bbc
+  source: relatedImages
+- name: ''
+  image: registry.redhat.io/ansible-automation-platform/platform-operator-bundle@sha256:5361300b6ba29d52d854b7ae80fe69afd59d3e6d74288b3ac54bab66d215ae42
+  repository: registry.redhat.io/ansible-automation-platform/platform-operator-bundle
+  tag: ''
+  digest: sha256:5361300b6ba29d52d854b7ae80fe69afd59d3e6d74288b3ac54bab66d215ae42
+  source: relatedImages
+- name: kube-rbac-proxy-container
+  image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9:v4.18@sha256:dcf51417d04e0f0f1d0efe25d12f764ddea07f0401bd6fd668a9547dcc92ec9a
+  repository: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9
+  tag: v4.18
+  digest: sha256:dcf51417d04e0f0f1d0efe25d12f764ddea07f0401bd6fd668a9547dcc92ec9a
+  source: relatedImages
+- name: postgresql-15-container
+  image: registry.redhat.io/rhel9/postgresql-15:1@sha256:d23329657fb56ace21119592c45801a9f599ee65b0cfc86394918e41e7ab7a9f
+  repository: registry.redhat.io/rhel9/postgresql-15
+  tag: '1'
+  digest: sha256:d23329657fb56ace21119592c45801a9f599ee65b0cfc86394918e41e7ab7a9f
+  source: relatedImages
+- name: redis-6-container
+  image: registry.redhat.io/rhel9/redis-6:1@sha256:d0a38d4c030b4ab759333c74710efec0fb03959b8a3212d4bccfa548638470a5
+  repository: registry.redhat.io/rhel9/redis-6
+  tag: '1'
+  digest: sha256:d0a38d4c030b4ab759333c74710efec0fb03959b8a3212d4bccfa548638470a5
+  source: relatedImages
+- name: ubi9-minimal-container
+  image: registry.redhat.io/ubi9-minimal:latest@sha256:baafce2d34783a28b4a472779f304e97e00f9d35c99553bc53b068b14344d9a9
+  repository: registry.redhat.io/ubi9-minimal
+  tag: latest
+  digest: sha256:baafce2d34783a28b4a472779f304e97e00f9d35c99553bc53b068b14344d9a9
+  source: relatedImages
