@@ -29,6 +29,7 @@ aap_operator_images_ocp_versions:
   - "4.21"
   - "4.22"
   - "4.23"
+  - "5.0"
 
 # AAP operator channels to dump. Each channel gets channels/<channel>/README.md.
 aap_operator_images_channels:
